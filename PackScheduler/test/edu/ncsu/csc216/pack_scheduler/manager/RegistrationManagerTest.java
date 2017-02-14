@@ -39,7 +39,13 @@ public class RegistrationManagerTest {
 
 	@Test
 	public void testLogin() {
-		fail("Not yet implemented");
+		StudentDirectory sd = manager.getStudentDirectory();
+		sd.addStudent("Caitlyn", "Wiley", "cjwiley2", "cjwiley2@ncsu.edu", "passWord123", "passWord123", 15);
+		assertTrue(manager.login("cjwiley2", "passWord123"));
+		assertFalse(manager.login("registrr", "Regi5tr@r"));
+		assertFalse(manager.login("registrar", "Registr@r"));
+		assertTrue(manager.login("registrar", "Regi5tr@r"));
+		
 	}
 
 	@Test
