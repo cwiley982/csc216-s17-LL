@@ -144,5 +144,19 @@ public class StudentDirectory {
 			throw new IllegalArgumentException("Unable to write to file " + fileName);
 		}
 	}
+	/**
+	 * Returms the student with the specified id
+	 * @param id the id of the student the user wants to get
+	 * @return the student whose id matches that provided by the user
+	 */
+	public Student getStudentById(String id){
+		for(int i = 0; i < studentDirectory.size(); i++){
+			if (studentDirectory.get(i).getId().equals(id))
+			{
+				return studentDirectory.get(i);
+			}
+		}
+		return null;
+	}
 
 }
