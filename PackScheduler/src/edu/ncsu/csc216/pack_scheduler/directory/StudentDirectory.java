@@ -145,7 +145,7 @@ public class StudentDirectory {
 		}
 	}
 	/**
-	 * Returms the student with the specified id
+	 * Returns the student with the specified id
 	 * @param id the id of the student the user wants to get
 	 * @return the student whose id matches that provided by the user
 	 */

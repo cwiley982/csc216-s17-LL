@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.ncsu.csc216.pack_scheduler.catalog.CourseCatalog;
+import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
+
 
 public class RegistrationManagerTest {
 	
@@ -19,15 +22,19 @@ public class RegistrationManagerTest {
 		manager = RegistrationManager.getInstance();
 		manager.clearData();
 	}
-
+	/**
+	 * Tests that the registartionManager creates an empty course catalog initially
+	 */
 	@Test
 	public void testGetCourseCatalog() {
-		fail("Not yet implemented");
+		assertEquals(0, manager.getCourseCatalog().getCourseCatalog().length);
 	}
-
+	/**
+	 * Tests that the registrationManager creates an empty student directory initially
+	 */
 	@Test
 	public void testGetStudentDirectory() {
-		fail("Not yet implemented");
+		assertEquals(0, manager.getStudentDirectory().getStudentDirectory().length);
 	}
 
 	@Test

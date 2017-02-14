@@ -80,7 +80,7 @@ public class RegistrationManager {
 	 * Method to login as a registrar
 	 * @param id the id of the user that wants to log in
 	 * @param password the password of the user that wants to log in
-	 * @return true if the login is sucsessful and false otherwise
+	 * @return true if the login is successful and false otherwise
 	 */
 	public boolean login(String id, String password) {
 		Student s = studentDirectory.getStudentById(id);
