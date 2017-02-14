@@ -163,7 +163,7 @@ public class StudentTest {
 	 */
 	public void testFirstName(){
 		//Sets valid student
-		Student s = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
+		User s = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
 		//tries to set first name to a null
 		try {
 		    s.setFirstName(null);
@@ -187,7 +187,7 @@ public class StudentTest {
 	 */
 	public void testLastName(){
 		//Sets valid student
-		Student s = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
+		User s = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
 		//tries to set last name to a null
 		try {
 		    s.setLastName(null);
@@ -211,7 +211,7 @@ public class StudentTest {
 	 * Tests setEmail in student class
 	 */
 	public void testSetEmail(){
-		Student s = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
+		User s = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
 		//Tries to set email to null
 		try{
 			s.setEmail(null);
@@ -254,7 +254,7 @@ public class StudentTest {
 	 * Tests setPassword in student class
 	 */
 	public void testSetPassword(){
-		Student s = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
+		User s = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
 		//Tries to set password to null
 		try{
 			s.setPassword(null);
@@ -300,15 +300,15 @@ public class StudentTest {
 	 */
 	@Test
 	public void testEqualsObject() {
-		Student s1 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
-		Student s2 = new Student("Corey", "Vandiver", "cavandiv", "cavandiv@ncsu.edu", "blah", 16);
-		Student s3 = new Student("Corey", "Vandiver", "cavandiv", "cavandiv@ncsu.edu", "blah", 16);
-		Student s4 = new Student("Dean", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
-		Student s5 = new Student("Claire", "Black", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
-		Student s6 = new Student("Claire", "Brown", "rogerroger", "ckbrown3@ncsu.edu", "password123", 17);
-		Student s7 = new Student("Claire", "Brown", "ckbrown3", "roger@ncsu.edu", "password123", 17);
-		Student s8 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "123password", 17);
-		Student s9 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 12);
+		User s1 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
+		User s2 = new Student("Corey", "Vandiver", "cavandiv", "cavandiv@ncsu.edu", "blah", 16);
+		User s3 = new Student("Corey", "Vandiver", "cavandiv", "cavandiv@ncsu.edu", "blah", 16);
+		User s4 = new Student("Dean", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
+		User s5 = new Student("Claire", "Black", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
+		User s6 = new Student("Claire", "Brown", "rogerroger", "ckbrown3@ncsu.edu", "password123", 17);
+		User s7 = new Student("Claire", "Brown", "ckbrown3", "roger@ncsu.edu", "password123", 17);
+		User s8 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "123password", 17);
+		User s9 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 12);
 		//test for equality in both directions
 		assertTrue(s2.equals(s3));
 		assertTrue(s3.equals(s2));
@@ -325,15 +325,15 @@ public class StudentTest {
 	 */
 	@Test
 	public void testHashCode(){
-		Student s1 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
-		Student s2 = new Student("Corey", "Vandiver", "cavandiv", "cavandiv@ncsu.edu", "blah", 16);
-		Student s3 = new Student("Corey", "Vandiver", "cavandiv", "cavandiv@ncsu.edu", "blah", 16);
-		Student s4 = new Student("Dean", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
-		Student s5 = new Student("Claire", "Black", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
-		Student s6 = new Student("Claire", "Brown", "rogerroger", "ckbrown3@ncsu.edu", "password123", 17);
-		Student s7 = new Student("Claire", "Brown", "ckbrown3", "roger@ncsu.edu", "password123", 17);
-		Student s8 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "123password", 17);
-		Student s9 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 12);
+		User s1 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
+		User s2 = new Student("Corey", "Vandiver", "cavandiv", "cavandiv@ncsu.edu", "blah", 16);
+		User s3 = new Student("Corey", "Vandiver", "cavandiv", "cavandiv@ncsu.edu", "blah", 16);
+		User s4 = new Student("Dean", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
+		User s5 = new Student("Claire", "Black", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
+		User s6 = new Student("Claire", "Brown", "rogerroger", "ckbrown3@ncsu.edu", "password123", 17);
+		User s7 = new Student("Claire", "Brown", "ckbrown3", "roger@ncsu.edu", "password123", 17);
+		User s8 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "123password", 17);
+		User s9 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 12);
 		//test for same hash code
 		assertEquals(s2.hashCode(), s3.hashCode());
 		//test for inequality for each field
@@ -351,7 +351,7 @@ public class StudentTest {
 	@Test
 	public void testToString() 
 	{
-		Student s1 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
+		User s1 = new Student("Claire", "Brown", "ckbrown3", "ckbrown3@ncsu.edu", "password123", 17);
 		assertEquals("Claire,Brown,ckbrown3,ckbrown3@ncsu.edu,password123,17", s1.toString());
 	}
 	
