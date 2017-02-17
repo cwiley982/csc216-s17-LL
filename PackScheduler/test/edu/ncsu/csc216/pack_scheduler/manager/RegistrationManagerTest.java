@@ -2,6 +2,7 @@ package edu.ncsu.csc216.pack_scheduler.manager;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -52,6 +53,7 @@ public class RegistrationManagerTest {
 	public void testLogin() {
 		StudentDirectory sd = manager.getStudentDirectory();
 		sd.addStudent("Caitlyn", "Wiley", "cjwiley2", "cjwiley2@ncsu.edu", "passWord123", "passWord123", 15);
+		assertNotNull(sd.getStudentById("cjwiley2"));
 		assertTrue(manager.login("cjwiley2", "passWord123"));
 		manager.logout();
 		try {
