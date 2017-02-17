@@ -123,7 +123,7 @@ public class RegistrationManager {
 	}
 
 	/**
-	 * Method that logs out the registrar
+	 * Method that logs out the registrar.
 	 */
 	public void logout() {
 		currentUser = null; 
