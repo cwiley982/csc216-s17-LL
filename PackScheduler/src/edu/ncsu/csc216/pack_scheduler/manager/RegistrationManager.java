@@ -83,40 +83,42 @@ public class RegistrationManager {
 	 * @return true if the login is successful and false otherwise
 	 */
 	public boolean login(String id, String password) {
-		Student s = studentDirectory.getStudentById(id);
-		if (s != null) {
-			try {
+		if (currentUser != null) {
+			Student s = studentDirectory.getStudentById(id);
+			if (s != null) {
+				try {
 
-				MessageDigest digest = MessageDigest.getInstance(HASH_ALGORITHM);
-				digest.update(password.getBytes());
-				String localHashPW = new String(digest.digest());
-				if (s.getPassword().equals(localHashPW)) {
-					currentUser = s;
-					return true;
+					MessageDigest digest = MessageDigest.getInstance(HASH_ALGORITHM);
+					digest.update(password.getBytes());
+					String localHashPW = new String(digest.digest());
+					if (s.getPassword().equals(localHashPW)) {
+						currentUser = s;
+						return true;
+					}
+				} catch (NoSuchAlgorithmException e) {
+					throw new IllegalArgumentException();
 				}
-			} catch (NoSuchAlgorithmException e) {
-				throw new IllegalArgumentException();
-			}	
-		} else if (registrar.getId().equals(id)) {
-			MessageDigest digest;
-			try {
-				digest = MessageDigest.getInstance(HASH_ALGORITHM);
-				digest.update(password.getBytes());
-				String localHashPW = new String(digest.digest());
-				if (registrar.getPassword().equals(localHashPW)) {
-					currentUser = registrar;
-					return true;
+			} else if (registrar.getId().equals(id)) {
+				MessageDigest digest;
+				try {
+					digest = MessageDigest.getInstance(HASH_ALGORITHM);
+					digest.update(password.getBytes());
+					String localHashPW = new String(digest.digest());
+					if (registrar.getPassword().equals(localHashPW)) {
+						currentUser = registrar;
+						return true;
+					} else {
+						return false;
+					}
+				} catch (NoSuchAlgorithmException e) {
+					throw new IllegalArgumentException();
 				}
-				else {
-					return false;
-				}
-			} catch (NoSuchAlgorithmException e) {
-				throw new IllegalArgumentException();
+			} else if (s == null) {
+				throw new IllegalArgumentException("User doesn't exist.");
 			}
-		} else if (s == null) {
-			throw new IllegalArgumentException("User doesn't exist.");
-		}
 
+			return false;
+		}
 		return false;
 	}
 
