@@ -122,11 +122,9 @@ public class RegistrationManager {
 			}
 		}
 		/*if user already logged in*/
-		else 
-		{
+		else if(currentUser != null) {
 			return false;
 		}
-			
 		return false;
 	}
 
