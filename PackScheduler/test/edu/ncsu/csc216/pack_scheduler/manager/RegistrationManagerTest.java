@@ -54,6 +54,7 @@ public class RegistrationManagerTest {
 		StudentDirectory sd = manager.getStudentDirectory();
 		sd.addStudent("Caitlyn", "Wiley", "cjwiley2", "cjwiley2@ncsu.edu", "passWord123", "passWord123", 15);
 		assertNotNull(sd.getStudentById("cjwiley2"));
+		manager.logout();
 		assertTrue(manager.login("cjwiley2", "passWord123"));
 		manager.logout();
 		try {
@@ -74,6 +75,7 @@ public class RegistrationManagerTest {
 	public void testLogout() {
 		StudentDirectory sd = manager.getStudentDirectory();
 		sd.addStudent("Caitlyn", "Wiley", "cjwiley2", "cjwiley2@ncsu.edu", "passWord123", "passWord123", 15);
+		manager.logout();
 		assertTrue(manager.login("cjwiley2", "passWord123"));
 		manager.logout();
 		assertEquals(null, manager.getCurrentUser());
