@@ -52,7 +52,7 @@ public class RegistrationManagerTest {
 	/**
 	 * Tests that when a student logs in, they can log out. (Current user becomes null)
 	 */
-	@Test
+	@Test 
 	public void testLogout() {
 		StudentDirectory sd = manager.getStudentDirectory();
 		sd.addStudent("Caitlyn", "Wiley", "cjwiley2", "cjwiley2@ncsu.edu", "passWord123", "passWord123", 15);

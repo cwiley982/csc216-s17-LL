@@ -128,7 +128,7 @@ public class RegistrationManager {
 	 * method that gets the current user
 	 * @return the current user
 	 */
-	public User getCurrentUser() {
+	public User getCurrentUser() { 
 		return currentUser;
 	}
 
