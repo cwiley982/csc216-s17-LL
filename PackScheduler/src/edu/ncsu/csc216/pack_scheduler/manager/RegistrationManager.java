@@ -84,7 +84,8 @@ public class RegistrationManager {
 	 * @return true if the login is successful and false otherwise
 	 */
 	public boolean login(String id, String password) {
-		if (currentUser == null) {
+		if (currentUser == null) 
+		{
 			Student s = studentDirectory.getStudentById(id);
 			if (s != null) {
 				try {
@@ -119,9 +120,13 @@ public class RegistrationManager {
 			} else if (s == null) {
 				throw new IllegalArgumentException("User doesn't exist.");
 			}
-		} else {
+		}
+		/*if user already logged in*/
+		else 
+		{
 			return false;
 		}
+			
 		return false;
 	}
 
