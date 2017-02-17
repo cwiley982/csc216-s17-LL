@@ -96,7 +96,7 @@ public class RegistrationManager {
 				}
 			} catch (NoSuchAlgorithmException e) {
 				throw new IllegalArgumentException();
-			}	
+			}
 		} else if (registrar.getId().equals(id)) {
 			MessageDigest digest;
 			try {
@@ -106,8 +106,7 @@ public class RegistrationManager {
 				if (registrar.getPassword().equals(localHashPW)) {
 					currentUser = registrar;
 					return true;
-				}
-				else {
+				} else {
 					return false;
 				}
 			} catch (NoSuchAlgorithmException e) {
@@ -121,7 +120,7 @@ public class RegistrationManager {
 	}
 
 	/**
-	 * Method that logs out the registrar
+	 * Method that logs out the registrar.
 	 */
 	public void logout() {
 		currentUser = null; 
