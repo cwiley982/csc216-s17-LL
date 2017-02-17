@@ -1,14 +1,23 @@
 package edu.ncsu.csc216.pack_scheduler.manager;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ncsu.csc216.pack_scheduler.catalog.CourseCatalog;
 import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
 
-
+/**
+ * Tests Registration Manager
+ * 
+ * @author Caitlyn Wiley
+ * @author Claire Brown
+ * @author Sam Weninger
+ *
+ */
 public class RegistrationManagerTest {
 	
 	private RegistrationManager manager;
@@ -44,8 +53,10 @@ public class RegistrationManagerTest {
 		StudentDirectory sd = manager.getStudentDirectory();
 		sd.addStudent("Caitlyn", "Wiley", "cjwiley2", "cjwiley2@ncsu.edu", "passWord123", "passWord123", 15);
 		assertTrue(manager.login("cjwiley2", "passWord123"));
+		manager.logout();
 		try {
 			assertFalse(manager.login("registrr", "Regi5tr@r"));
+			fail();
 		}
 		catch(IllegalArgumentException e) {
 			assertEquals(e.getMessage(), "User doesn't exist.");
