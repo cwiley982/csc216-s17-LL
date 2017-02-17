@@ -47,8 +47,8 @@ public class RegistrationManagerTest {
 		try {
 			assertFalse(manager.login("registrr", "Regi5tr@r"));
 		}
-		catch(IllegalArgumentException e){
-			
+		catch(IllegalArgumentException e) {
+			assertEquals(e.getMessage(), "User doesn't exist.");
 		}
 		assertFalse(manager.login("registrar", "Registr@r"));
 		assertTrue(manager.login("registrar", "Regi5tr@r"));
