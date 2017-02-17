@@ -70,14 +70,14 @@ public class Course extends Activity implements Comparable<Course>
 	{
 		if (meetingDays == null || meetingDays.length() == 0)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid meeting days");
 		}
 		for (int i = 0; i < meetingDays.length(); i++)
 		{
 			if (meetingDays.charAt(i) != 'M' && meetingDays.charAt(i) != 'T' && meetingDays.charAt(i) != 'W'
 					&& meetingDays.charAt(i) != 'H' && meetingDays.charAt(i) != 'F' && meetingDays.charAt(i) != 'A')
 			{
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("Invalid meeting days");
 			}
 		}
 		if (meetingDays.contains("A") && meetingDays.length() != 1)

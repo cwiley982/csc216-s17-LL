@@ -56,9 +56,14 @@ public class CourseCatalog {
 	 * @return whether the course can be added or not
 	 */
 	public boolean addCourseToCatalog(String name, String title, String section, int credits, String instructorId, String meetingDays, int startTime, int endTime){
-		
+		Course c = null;
 		try{
-			Course c = new Course(name, title, section, credits, instructorId, meetingDays, startTime, endTime);
+			if(meetingDays.equals("A")){
+				c = new Course(name, title, section, credits, instructorId, meetingDays);
+			}
+			else{
+				c = new Course(name, title, section, credits, instructorId, meetingDays, startTime, endTime);
+			}
 			boolean duplicate = false;
 			for (int i = 0; i < catalog.size(); i++)
 			{
@@ -76,7 +81,7 @@ public class CourseCatalog {
 				return false;
 			}
 		} catch(IllegalArgumentException e){
-			throw new IllegalArgumentException();	
+			throw new IllegalArgumentException(e.getMessage());	
 		}
 	}
 	/**

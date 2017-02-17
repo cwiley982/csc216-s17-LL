@@ -50,7 +50,7 @@ public abstract class Activity implements Conflict {
 	 */
 	public void setTitle(String title) {
 		if (title == null || title.length() == 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid title");
 		}
 		this.title = title;
 	}
@@ -113,24 +113,24 @@ public abstract class Activity implements Conflict {
 	public void setActivityTime(int startTime, int endTime) {
 		/* checks if valid military time */
 		if (startTime < 0 || startTime > 2359) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid meeting days");
 		}
 		if (endTime < 0 || endTime > 2359) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid meeting days");
 		}
 		/* military time can not have a minute value greater than 59 */
 		if (startTime % 100 >= 60 || endTime % 100 >= 60) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid meeting days");
 		}
 		/* checks if starts before it ends */
 		if (endTime < startTime) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid meeting days");
 		}
 		/* checks that if the meetingDay = "A" that startTime and endTime = 0 */
 		if (meetingDays.equals("A") && startTime != 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid meeting days");
 		} else if (meetingDays.equals("A") && endTime != 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid meeting days");
 		}
 		this.startTime = startTime;
 		this.endTime = endTime;
