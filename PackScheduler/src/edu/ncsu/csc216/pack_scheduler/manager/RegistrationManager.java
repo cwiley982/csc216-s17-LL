@@ -121,7 +121,7 @@ public class RegistrationManager {
 	 * Method that logs out the registrar
 	 */
 	public void logout() {
-		currentUser = registrar; 
+		currentUser = null; 
 	}
 
 	/**
@@ -129,8 +129,7 @@ public class RegistrationManager {
 	 * @return the current user
 	 */
 	public User getCurrentUser() {
-		//TODO implement method
-		return null;
+		return currentUser;
 	}
 
 	/**

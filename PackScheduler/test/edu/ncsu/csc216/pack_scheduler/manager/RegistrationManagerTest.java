@@ -36,7 +36,9 @@ public class RegistrationManagerTest {
 	public void testGetStudentDirectory() {
 		assertEquals(0, manager.getStudentDirectory().getStudentDirectory().length);
 	}
-
+	/**
+	 * Tests whether a student or registrar can successfully log in
+	 */
 	@Test
 	public void testLogin() {
 		StudentDirectory sd = manager.getStudentDirectory();
@@ -47,15 +49,27 @@ public class RegistrationManagerTest {
 		assertTrue(manager.login("registrar", "Regi5tr@r"));
 		
 	}
-
+	/**
+	 * Tests that when a student logs in, they can log out. (Current user becomes null)
+	 */
 	@Test
 	public void testLogout() {
-		fail("Not yet implemented");
+		StudentDirectory sd = manager.getStudentDirectory();
+		sd.addStudent("Caitlyn", "Wiley", "cjwiley2", "cjwiley2@ncsu.edu", "passWord123", "passWord123", 15);
+		assertTrue(manager.login("cjwiley2", "passWord123"));
+		manager.logout();
+		assertEquals(null, manager.getCurrentUser());
 	}
-
+	
+	/**
+	 * Tests that manager returns the correct current user
+	 */
 	@Test
 	public void testGetCurrentUser() {
-		fail("Not yet implemented");
+		StudentDirectory sd = manager.getStudentDirectory();
+		sd.addStudent("Caitlyn", "Wiley", "cjwiley2", "cjwiley2@ncsu.edu", "passWord123", "passWord123", 15);
+		assertTrue(manager.login("cjwiley2", "passWord123"));
+		assertEquals("Caitlyn", manager.getCurrentUser().getFirstName());
 	}
 
 }
