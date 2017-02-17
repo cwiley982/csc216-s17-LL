@@ -84,7 +84,7 @@ public class RegistrationManager {
 	 */
 	public boolean login(String id, String password) {
 		Student s = studentDirectory.getStudentById(id);
-		if(s != null){
+		if (s != null) {
 			try {
 
 				MessageDigest digest = MessageDigest.getInstance(HASH_ALGORITHM);
@@ -97,8 +97,7 @@ public class RegistrationManager {
 			} catch (NoSuchAlgorithmException e) {
 				throw new IllegalArgumentException();
 			}	
-		}
-		else if (registrar.getId().equals(id)) {
+		} else if (registrar.getId().equals(id)) {
 			MessageDigest digest;
 			try {
 				digest = MessageDigest.getInstance(HASH_ALGORITHM);
@@ -111,6 +110,8 @@ public class RegistrationManager {
 			} catch (NoSuchAlgorithmException e) {
 				throw new IllegalArgumentException();
 			}
+		} else if (s == null) {
+			throw new IllegalArgumentException();
 		}
 
 		return false;
