@@ -82,7 +82,7 @@ public class Course extends Activity implements Comparable<Course>
 		}
 		if (meetingDays.contains("A") && meetingDays.length() != 1)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid meeting days");
 		}
 		super.setMeetingDays(meetingDays);
 	}
@@ -105,11 +105,11 @@ public class Course extends Activity implements Comparable<Course>
 	private void setName(String name) {
 		if (name == null || name.length() == 0)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid name");
 		}
 		else if (name.length() < 4 || name.length() > 6)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid name");
 		}
 		this.name = name;
 	}
@@ -135,11 +135,11 @@ public class Course extends Activity implements Comparable<Course>
 	public void setSection(String section) {
 		if (section == null || section.length() == 0)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid section");
 		}
 		if (section.length() != 3)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid section");
 		}
 		else
 		{
@@ -147,7 +147,7 @@ public class Course extends Activity implements Comparable<Course>
 			{
 				if (!Character.isDigit(section.charAt(i)))
 				{
-					throw new IllegalArgumentException();
+					throw new IllegalArgumentException("Invalid section");
 				}
 			}
 		}
@@ -175,7 +175,7 @@ public class Course extends Activity implements Comparable<Course>
 	{
 		if (credits < 1 || credits > 5)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid credits");
 		}
 		this.credits = credits;
 	}
@@ -199,7 +199,7 @@ public class Course extends Activity implements Comparable<Course>
 	public void setInstructorId(String instructorId) {
 		if (instructorId == null || instructorId.length() == 0)
 		{
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Invalid instructor Id");
 		}
 		this.instructorId = instructorId;
 	}
