@@ -47,11 +47,12 @@ public class RegistrationManager {
 		courseCatalog = new CourseCatalog();
 		studentDirectory = new StudentDirectory();
 		registrar = new Registrar();
+		currentUser = null;
 	}
 	
 	/**
 	 * Method to create an instance of registrationManager
-	 * @return the instince of RegistrationManager
+	 * @return the instance of RegistrationManager
 	 */
 	public static RegistrationManager getInstance() {
 		if (instance == null) {
@@ -118,11 +119,10 @@ public class RegistrationManager {
 			} else if (s == null) {
 				throw new IllegalArgumentException("User doesn't exist.");
 			}
-
-			return false;
 		} else {
 			return false;
 		}
+		return false;
 	}
 
 	/**
