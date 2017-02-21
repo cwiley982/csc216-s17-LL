@@ -12,14 +12,16 @@ public class CourseNameValidator {
 	private int letterCount;
 	private int digitCount;
 	private boolean validEndState;
+	private State currentState;
 
 	public boolean isValid(String name){
 		return false;
 	}
 
 	public abstract class State {
-		public abstract void onLetter();
-		public abstract void onDigit();
+		public abstract void onLetter() throws InvalidTransitionException;
+
+		public abstract void onDigit() throws InvalidTransitionException;
 
 		public void onOther() throws InvalidTransitionException {
 			throw new InvalidTransitionException("Course name can only contain letters and digits.");
@@ -30,14 +32,20 @@ public class CourseNameValidator {
 			private static final int MAX_PREFIX_LETTERS = 4;
 
 			@Override
-			public void onLetter() {
-
+			public void onLetter() throws InvalidTransitionException {
+				letterCount++;
+				if (letterCount > MAX_PREFIX_LETTERS) {
+					throw new InvalidTransitionException();
+				}
 
 			}
 
 			@Override
 			public void onDigit() {
-				// TODO Auto-generated method stub
+				digitCount++;
+				if (letterCount <= MAX_PREFIX_LETTERS) {
+					currentState = new NumberState();
+				}
 
 			}
 
@@ -46,14 +54,14 @@ public class CourseNameValidator {
 		public class SuffixState extends State {
 
 			@Override
-			public void onLetter() {
-				// TODO Auto-generated method stub
+			public void onLetter() throws InvalidTransitionException {
+				throw new InvalidTransitionException();
 
 			}
 
 			@Override
-			public void onDigit() {
-				// TODO Auto-generated method stub
+			public void onDigit() throws InvalidTransitionException {
+				throw new InvalidTransitionException();
 
 			}
 
@@ -63,14 +71,13 @@ public class CourseNameValidator {
 
 			@Override
 			public void onLetter() {
-				// TODO Auto-generated method stub
-
+				letterCount++;
+				currentState = new LetterState();
 			}
 
 			@Override
-			public void onDigit() {
-				// TODO Auto-generated method stub
-
+			public void onDigit() throws InvalidTransitionException {
+				throw new InvalidTransitionException();
 			}
 
 		}
@@ -80,14 +87,21 @@ public class CourseNameValidator {
 			private static final int COURSE_NUMBER_LENGTH = 3;
 
 			@Override
-			public void onLetter() {
-				// TODO Auto-generated method stub
+			public void onLetter() throws InvalidTransitionException {
+				if (digitCount == COURSE_NUMBER_LENGTH) {
+					currentState = new SuffixState();
+				} else {
+					throw new InvalidTransitionException();
+				}
 
 			}
 
 			@Override
-			public void onDigit() {
-				// TODO Auto-generated method stub
+			public void onDigit() throws InvalidTransitionException {
+				digitCount++;
+				if (digitCount > COURSE_NUMBER_LENGTH) {
+					throw new InvalidTransitionException();
+				}
 
 			}
 
