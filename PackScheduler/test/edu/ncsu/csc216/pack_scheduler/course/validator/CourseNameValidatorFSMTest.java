@@ -1,6 +1,7 @@
 package edu.ncsu.csc216.pack_scheduler.course.validator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -137,10 +138,37 @@ public class CourseNameValidatorFSMTest {
 			//skip
 		}
 			
+		/* test letters, 1 number, letter */
+		try {
+			assert (!fsm.isValid("CSC2C"));
+			fail();
+		} catch (InvalidTransitionException e) {
+			assertEquals("Course name must have 3 digits.", e.getMessage());
+		}
 		
+		/* test letters, 2 numbers, letter */
+		try {
+			assert (!fsm.isValid("CSC21C"));
+			fail();
+		} catch (InvalidTransitionException e) {
+			assertEquals("Course name must have 3 digits.", e.getMessage());
+		}
 		
-		
-		
+		/* test number after suffix */
+		try {
+			assert (!fsm.isValid("CSC216C2"));
+			fail();
+		} catch (InvalidTransitionException e) {
+			assertEquals("Course name cannot contain digits after the suffix.", e.getMessage());
+		}
+
+		/* test punctuation after suffix */
+		try {
+			assert (!fsm.isValid("CSC216C!"));
+			fail();
+		} catch (InvalidTransitionException e) {
+			// skip
+		}
 	}
 
 }
