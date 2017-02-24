@@ -15,7 +15,7 @@ import org.junit.Test;
 public class CourseNameValidatorFSMTest {
 	
 	/**
-	 *   
+	 * Tester for course name validator FSM 
 	 */
 	@Test
 	public void test() {
