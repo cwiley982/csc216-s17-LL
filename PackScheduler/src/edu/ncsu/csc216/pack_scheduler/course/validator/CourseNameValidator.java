@@ -64,106 +64,109 @@ public class CourseNameValidator {
 			throw new InvalidTransitionException("Course name can only contain letters and digits.");
 		}
 		
-		/**
-		 * inner inner class that is an initial state
-		 * @author Sam
-		 *
-		 */
-		private class InitialState extends State {
-
-			@Override
-			public void onLetter() {
-				letterCount++;
-				currentState = new LetterState();
-			}
-
-			@Override
-			public void onDigit() throws InvalidTransitionException {
-				throw new InvalidTransitionException();
-			}
-
-		}
-		
-		
-		/**
-		 * inner inner class that is a letter state
-		 * @author Sam
-		 *
-		 */
-		private class LetterState extends State {
-
-			private static final int MAX_PREFIX_LETTERS = 4;
-
-			@Override
-			public void onLetter() throws InvalidTransitionException {
-				letterCount++;
-				if (letterCount > MAX_PREFIX_LETTERS) {
-					throw new InvalidTransitionException();
-				}
-
-			}
-
-			@Override
-			public void onDigit() {
-				digitCount++;
-				if (letterCount <= MAX_PREFIX_LETTERS) {
-					currentState = new NumberState();
-				}
-
-			}
-
-		}
-		
-		/**
-		 * inner inner class that is a suffix state
-		 * @author Sam
-		 *
-		 */
-		private class SuffixState extends State {
-
-			@Override
-			public void onLetter() throws InvalidTransitionException {
-				throw new InvalidTransitionException();
-
-			}
-
-			@Override
-			public void onDigit() throws InvalidTransitionException {
-				throw new InvalidTransitionException();
-
-			}
-
-		}
-		
-		/**
-		 * inner inner class that is a number state
-		 * @author Sam
-		 *
-		 */
-		private class NumberState extends State {
-
-			private static final int COURSE_NUMBER_LENGTH = 3;
-
-			@Override
-			public void onLetter() throws InvalidTransitionException {
-				if (digitCount == COURSE_NUMBER_LENGTH) {
-					currentState = new SuffixState();
-				} else {
-					throw new InvalidTransitionException();
-				}
-
-			}
-
-			@Override
-			public void onDigit() throws InvalidTransitionException {
-				digitCount++;
-				if (digitCount > COURSE_NUMBER_LENGTH) {
-					throw new InvalidTransitionException();
-				}
-
-			}
-
-		}
 	}
 
+	/**
+	 * inner inner class that is an initial state
+	 * 
+	 * @author Sam
+	 *
+	 */
+	public class InitialState extends State {
+
+		@Override
+		public void onLetter() {
+			letterCount++;
+			currentState = new LetterState();
+		}
+
+		@Override
+		public void onDigit() throws InvalidTransitionException {
+			throw new InvalidTransitionException();
+		}
+
+	}
+
+	/**
+	 * inner inner class that is a letter state
+	 * 
+	 * @author Sam
+	 *
+	 */
+	private class LetterState extends State {
+
+		private static final int MAX_PREFIX_LETTERS = 4;
+
+		@Override
+		public void onLetter() throws InvalidTransitionException {
+			letterCount++;
+			if (letterCount > MAX_PREFIX_LETTERS) {
+				throw new InvalidTransitionException();
+			}
+
+		}
+
+		@Override
+		public void onDigit() {
+			digitCount++;
+			if (letterCount <= MAX_PREFIX_LETTERS) {
+				currentState = new NumberState();
+			}
+
+		}
+
+	}
+
+	/**
+	 * inner inner class that is a suffix state
+	 * 
+	 * @author Sam
+	 *
+	 */
+	private class SuffixState extends State {
+
+		@Override
+		public void onLetter() throws InvalidTransitionException {
+			throw new InvalidTransitionException();
+
+		}
+
+		@Override
+		public void onDigit() throws InvalidTransitionException {
+			throw new InvalidTransitionException();
+
+		}
+
+	}
+
+	/**
+	 * inner inner class that is a number state
+	 * 
+	 * @author Sam
+	 *
+	 */
+	private class NumberState extends State {
+
+		private static final int COURSE_NUMBER_LENGTH = 3;
+
+		@Override
+		public void onLetter() throws InvalidTransitionException {
+			if (digitCount == COURSE_NUMBER_LENGTH) {
+				currentState = new SuffixState();
+			} else {
+				throw new InvalidTransitionException();
+			}
+
+		}
+
+		@Override
+		public void onDigit() throws InvalidTransitionException {
+			digitCount++;
+			if (digitCount > COURSE_NUMBER_LENGTH) {
+				throw new InvalidTransitionException();
+			}
+
+		}
+
+	}
 }
