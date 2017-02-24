@@ -23,7 +23,7 @@ public class CourseNameValidatorTest {
 		CourseNameValidator fsm = new CourseNameValidator();
 
 		/*test valid input*/
-		try{
+		try {
 			assert fsm.isValid("CSC216");
 		}
 		catch(InvalidTransitionException e)
@@ -32,7 +32,7 @@ public class CourseNameValidatorTest {
 		}
 
 		/*test start with letter*/
-		try{
+		try {
 			assert fsm.isValid("T167");
 		}
 		catch(InvalidTransitionException e)
@@ -42,7 +42,7 @@ public class CourseNameValidatorTest {
 
 
 		/*tests start with 2 letters*/
-		try{
+		try {
 			assert fsm.isValid("Cl516");
 		}
 		catch(InvalidTransitionException e)
@@ -51,7 +51,7 @@ public class CourseNameValidatorTest {
 		}
 
 		/*test start with 3 letters*/
-		try{
+		try {
 			assert fsm.isValid("Clr516");
 		}
 		catch(InvalidTransitionException e)
@@ -60,7 +60,7 @@ public class CourseNameValidatorTest {
 		}
 
 		/*test start with 4 letters*/
-		try{
+		try {
 			assert fsm.isValid("Clre516");
 		}
 		catch(InvalidTransitionException e)
@@ -69,7 +69,7 @@ public class CourseNameValidatorTest {
 		}
 
 		/*test with valid suffix*/
-		try{
+		try {
 			assert fsm.isValid("Clre516A");
 		}
 		catch(InvalidTransitionException e)
@@ -88,7 +88,7 @@ public class CourseNameValidatorTest {
 		CourseNameValidator fsm = new CourseNameValidator();
 		
 		/*test start with number*/
-		try{
+		try {
 			assert fsm.isValid("216CSC");
 			fail();
 		}
@@ -97,7 +97,7 @@ public class CourseNameValidatorTest {
 			//skip
 		}
 		/*test start with non letter or number*/
-		try{
+		try {
 			assert fsm.isValid("!16CSC");
 			fail();
 		}
@@ -107,7 +107,7 @@ public class CourseNameValidatorTest {
 		}
 
 		/*test start with more than four letters*/
-		try{
+		try {
 			assert fsm.isValid("Claire216");
 			fail();
 		}
@@ -116,7 +116,7 @@ public class CourseNameValidatorTest {
 			//skip
 		}
 		/*test end with multiple letters*/
-		try{
+		try {
 			assert fsm.isValid("CSC216Awesome");
 			fail();
 		}
@@ -126,7 +126,7 @@ public class CourseNameValidatorTest {
 		}
 
 		/*test only 1 digit*/
-		try{
+		try {
 			assert !fsm.isValid("Cl5");
 		}
 		catch(InvalidTransitionException e)
@@ -135,7 +135,7 @@ public class CourseNameValidatorTest {
 		}
 
 		/*test only 2 digit*/
-		try{
+		try {
 			assert !fsm.isValid("Clr51");
 		}
 		catch(InvalidTransitionException e)
@@ -144,7 +144,7 @@ public class CourseNameValidatorTest {
 		}
 
 		/*test 4 digit*/
-		try{
+		try {
 			assert !fsm.isValid("Clre5165");
 		}
 		catch(InvalidTransitionException e)
