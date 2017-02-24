@@ -18,7 +18,7 @@ public class CourseNameValidator {
 	private final State numberState = new NumberState();
 	private final State suffixState = new SuffixState();
 	private final State start = new InitialState();
-	private State currentState = start;
+	private State currentState;
 	
 	/**
 	 * Tests to see if the name is valid
@@ -27,8 +27,11 @@ public class CourseNameValidator {
 	 * @return true if the mane is valid false otherwise
 	 */
 	public boolean isValid(String name) throws InvalidTransitionException{
-	
-		
+		//Resets class counters for repeated use
+		letterCount = 0;
+		digitCount = 0;
+		validEndState = false;
+		currentState = start;
 		int charIndex = 0;
 		char ch;
 		
@@ -134,7 +137,7 @@ public class CourseNameValidator {
 
 		@Override
 		public void onDigit() throws InvalidTransitionException {
-			throw new InvalidTransitionException();
+			throw new InvalidTransitionException("Course name cannot contain digits after the suffix.");
 
 		}
 
