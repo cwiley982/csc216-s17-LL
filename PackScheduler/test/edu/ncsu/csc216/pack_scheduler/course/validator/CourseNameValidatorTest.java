@@ -15,6 +15,7 @@ import org.junit.Test;
 public class CourseNameValidatorTest {
 
 	/**
+	 * Tests Valid name paths for isValid
 	 * 
 	 */
 	@Test
@@ -80,7 +81,7 @@ public class CourseNameValidatorTest {
 	}
 	
 	/**
-	 * 
+	 * Tests invalid name paths in isValid
 	 */
 	@Test
 	public void testInvalidPaths() {
