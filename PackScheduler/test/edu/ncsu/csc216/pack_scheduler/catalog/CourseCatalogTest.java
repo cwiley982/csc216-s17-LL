@@ -124,11 +124,9 @@ public class CourseCatalogTest {
 	public void testGetCourseCatalog(){
 		CourseCatalog c = new CourseCatalog();
 		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", "MTWHF", 100, 1600);
-		c.addCourseToCatalog("CCC22", "A Class Corey Can Have Fun In", "002", 2, "cavandiv", "MF", 300, 1100);
 		c.addCourseToCatalog("CC222", "COOKIES!", "001", 3, "ckbrown3", "MTF", 1300, 1800);
 		assertEquals("CC222", c.getCourseCatalog()[0][0]);
-		assertEquals("CCC22", c.getCourseCatalog()[1][0]);
-		assertEquals("ZPD181", c.getCourseCatalog()[2][0]);
+		assertEquals("ZPD181", c.getCourseCatalog()[1][0]);
 		
 	}
 	
@@ -139,7 +137,6 @@ public class CourseCatalogTest {
 	public void testSaveCourseCatalog(){
 		CourseCatalog c = new CourseCatalog();
 		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", "MTWHF", 100, 1600);
-		c.addCourseToCatalog("CCC22", "A Class Corey Can Have Fun In", "002", 2, "cavandiv", "MF", 300, 1100);
 		c.addCourseToCatalog("CC222", "COOKIES!", "001", 3, "ckbrown3", "MTF", 1300, 1800);
 		 //tries to save CourseCatalog to a valid file
 		c.saveCourseCatalog("test-files/Empty_File.txt");
