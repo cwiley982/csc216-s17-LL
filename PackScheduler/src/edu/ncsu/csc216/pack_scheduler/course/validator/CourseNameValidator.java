@@ -44,6 +44,7 @@ public class CourseNameValidator {
 			else {
 				currentState.onOther();
 			}
+			charIndex++;
 		}
 		return validEndState;
 	}
@@ -153,8 +154,9 @@ public class CourseNameValidator {
 		public void onLetter() throws InvalidTransitionException {
 			if (digitCount == COURSE_NUMBER_LENGTH) {
 				currentState = suffixState;
+				validEndState = true;
 			} else {
-				throw new InvalidTransitionException();
+				throw new InvalidTransitionException("Course name must have 3 digits.");
 			}
 
 		}
@@ -163,8 +165,14 @@ public class CourseNameValidator {
 		public void onDigit() throws InvalidTransitionException {
 			digitCount++;
 			if (digitCount > COURSE_NUMBER_LENGTH) {
-				throw new InvalidTransitionException();
+				throw new InvalidTransitionException("Course name must have 3 digits.");
 			}
+			else if (digitCount == COURSE_NUMBER_LENGTH)
+			{
+				validEndState = true;
+			}
+	
+		
 
 		}
 

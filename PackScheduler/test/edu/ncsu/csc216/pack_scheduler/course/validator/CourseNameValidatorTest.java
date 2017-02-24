@@ -32,7 +32,7 @@ public class CourseNameValidatorTest {
 
 		/*test start with letter*/
 		try{
-			assert(fsm.isValid("T167C"));
+			assert(fsm.isValid("T167"));
 		}
 		catch(InvalidTransitionException e)
 		{
