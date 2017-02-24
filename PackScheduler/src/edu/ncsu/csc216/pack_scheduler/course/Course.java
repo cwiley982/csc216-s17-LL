@@ -3,6 +3,9 @@
  */
 package edu.ncsu.csc216.pack_scheduler.course;
 
+import edu.ncsu.csc216.pack_scheduler.course.validator.CourseNameValidator;
+import edu.ncsu.csc216.pack_scheduler.course.validator.InvalidTransitionException;
+
 /**
  * Course class for WolfScheduler. Subclass of activity. Inherants activity fields 
  * and also contains course name, section, credits, and instructorID
@@ -20,6 +23,8 @@ public class Course extends Activity implements Comparable<Course>
 	private int credits;
 	/** Course's instructor */
 	private String instructorId;
+	/** Validator to make sure the course name is legal */
+	private CourseNameValidator validator;
 	/**
 	 * Constructs a course object with values for all fields
 	 * @param name name of the Course
@@ -34,11 +39,12 @@ public class Course extends Activity implements Comparable<Course>
 	public Course(String name, String title, String section, int credits, String instructorId, String meetingDays,
 			int startTime, int endTime) 
 	{
-		  super(title, meetingDays, startTime, endTime);
-		  setName(name);
-		  setSection(section);
-		  setCredits(credits);
-		  setInstructorId(instructorId);
+		super(title, meetingDays, startTime, endTime);
+		validator = new CourseNameValidator();
+		setName(name);
+		setSection(section);
+		setCredits(credits);
+		setInstructorId(instructorId);
 	}
 	/**
 	 * Constructs a Course with a given name, title, section, credits, instructor ID and meeting days
@@ -103,15 +109,18 @@ public class Course extends Activity implements Comparable<Course>
 	 * less than 4, or length is greater than 6 
 	 */
 	private void setName(String name) {
-		if (name == null || name.length() == 0)
-		{
+		if (name == null || name.length() == 0) {
 			throw new IllegalArgumentException("Invalid name");
 		}
-		else if (name.length() < 4 || name.length() > 6)
-		{
+		try {
+			if (validator.isValid(name)) {
+				this.name = name;
+			} else {
+				throw new IllegalArgumentException();
+			}
+		} catch (InvalidTransitionException e) {
 			throw new IllegalArgumentException("Invalid name");
 		}
-		this.name = name;
 	}
 
 	/**
