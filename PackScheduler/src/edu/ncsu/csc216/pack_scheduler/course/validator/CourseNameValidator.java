@@ -14,11 +14,11 @@ public class CourseNameValidator {
 	private int letterCount;
 	private int digitCount;
 	private boolean validEndState;
-	private final State LETTER_STATE = new LetterState();
-	private final State NUMBER_STATE = new NumberState();
-	private final State SUFFIX_STATE = new SuffixState();
-	private final State START = new InitialState();
-	private State currentState = START;
+	private final State letterState = new LetterState();
+	private final State numberState = new NumberState();
+	private final State suffixState = new SuffixState();
+	private final State start = new InitialState();
+	private State currentState = start;
 	
 	/**
 	 * Tests to see if the name is valid
@@ -67,7 +67,7 @@ public class CourseNameValidator {
 	}
 
 	/**
-	 * inner inner class that is an initial state
+	 * Inner class that is an initial state
 	 * 
 	 * @author Sam
 	 *
@@ -77,7 +77,7 @@ public class CourseNameValidator {
 		@Override
 		public void onLetter() {
 			letterCount++;
-			currentState = new LetterState();
+			currentState = letterState;
 		}
 
 		@Override
@@ -88,7 +88,7 @@ public class CourseNameValidator {
 	}
 
 	/**
-	 * inner inner class that is a letter state
+	 * Inner class that is a letter state
 	 * 
 	 * @author Sam
 	 *
@@ -110,7 +110,7 @@ public class CourseNameValidator {
 		public void onDigit() {
 			digitCount++;
 			if (letterCount <= MAX_PREFIX_LETTERS) {
-				currentState = new NumberState();
+				currentState = numberState;
 			}
 
 		}
@@ -118,7 +118,7 @@ public class CourseNameValidator {
 	}
 
 	/**
-	 * inner inner class that is a suffix state
+	 * Inner class that is a suffix state
 	 * 
 	 * @author Sam
 	 *
@@ -140,7 +140,7 @@ public class CourseNameValidator {
 	}
 
 	/**
-	 * inner inner class that is a number state
+	 * Inner class that is a number state
 	 * 
 	 * @author Sam
 	 *
@@ -152,7 +152,7 @@ public class CourseNameValidator {
 		@Override
 		public void onLetter() throws InvalidTransitionException {
 			if (digitCount == COURSE_NUMBER_LENGTH) {
-				currentState = new SuffixState();
+				currentState = suffixState;
 			} else {
 				throw new InvalidTransitionException();
 			}
