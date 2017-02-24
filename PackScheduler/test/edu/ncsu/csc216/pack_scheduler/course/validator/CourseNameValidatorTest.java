@@ -89,8 +89,8 @@ public class CourseNameValidatorTest {
 		
 		/*test start with number*/
 		try {
-			assert fsm2.isValid("216CSC");
-			//fail();
+			fsm2.isValid("216CSC");
+			fail();
 		}
 		catch(InvalidTransitionException e)
 		{
@@ -98,7 +98,7 @@ public class CourseNameValidatorTest {
 		}
 		/*test start with non letter or number*/
 		try {
-			assert fsm2.isValid("!16CSC");
+			fsm2.isValid("!16CSC");
 			fail();
 		}
 		catch(InvalidTransitionException e)
@@ -108,7 +108,7 @@ public class CourseNameValidatorTest {
 
 		/*test start with more than four letters*/
 		try {
-			assert fsm2.isValid("Claire216");
+			fsm2.isValid("Claire216");
 			fail();
 		}
 		catch(InvalidTransitionException e)
@@ -117,7 +117,7 @@ public class CourseNameValidatorTest {
 		}
 		/*test end with multiple letters*/
 		try {
-			assert fsm2.isValid("CSC216Awesome");
+			fsm2.isValid("CSC216Awesome");
 			fail();
 		}
 		catch(InvalidTransitionException e)
@@ -154,7 +154,7 @@ public class CourseNameValidatorTest {
 
 		/* test letters, 1 number, letter */
 		try {
-			assert !fsm2.isValid("CSC2C") ;
+			fsm2.isValid("CSC2C") ;
 			fail();
 		} catch (InvalidTransitionException e) {
 			assertEquals("Course name must have 3 digits.", e.getMessage());
@@ -162,7 +162,7 @@ public class CourseNameValidatorTest {
 
 		/* test letters, 2 numbers, letter */
 		try {
-			assert !fsm2.isValid("CSC21C");
+			fsm2.isValid("CSC21C");
 			fail();
 		} catch (InvalidTransitionException e) {
 			assertEquals("Course name must have 3 digits.", e.getMessage());
@@ -170,7 +170,7 @@ public class CourseNameValidatorTest {
 
 		/* test number after suffix */
 		try {
-			assert !fsm2.isValid("CSC216C2");
+			fsm2.isValid("CSC216C2");
 			fail();
 		} catch (InvalidTransitionException e) {
 			assertEquals("Course name cannot contain digits after the suffix.", e.getMessage());
@@ -178,7 +178,7 @@ public class CourseNameValidatorTest {
 
 		/* test punctuation after suffix */
 		try {
-			assert !fsm2.isValid("CSC216C!");
+			fsm2.isValid("CSC216C!");
 			fail();
 		} catch (InvalidTransitionException e) {
 			// skip
