@@ -41,7 +41,7 @@ public class CourseNameValidatorTest {
 		}
 
 
-		/*test start with 2 letters*/
+		/*tests start with 2 letters*/
 		try{
 			assert fsm.isValid("Cl516");
 		}
