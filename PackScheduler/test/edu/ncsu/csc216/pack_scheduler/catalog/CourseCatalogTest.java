@@ -123,7 +123,7 @@ public class CourseCatalogTest {
 	@Test
 	public void testGetCourseCatalog(){
 		CourseCatalog c = new CourseCatalog();
-		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", "MTWHF", 100, 1600);
+		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandivd", "MTWHF", 100, 1600);
 		c.addCourseToCatalog("CC222", "COOKIES!", "001", 3, "ckbrown3", "MTF", 1300, 1800);
 		assertEquals("CC222", c.getCourseCatalog()[0][0]);
 		assertEquals("ZPD181", c.getCourseCatalog()[1][0]);
