@@ -14,7 +14,11 @@ public class CourseNameValidator {
 	private int letterCount;
 	private int digitCount;
 	private boolean validEndState;
-	private State currentState;
+	private final State LETTER_STATE = new LetterState();
+	private final State NUMBER_STATE = new NumberState();
+	private final State SUFFIX_STATE = new SuffixState();
+	private final State START = new InitialState();
+	private State currentState = START;
 	
 	/**
 	 * Tests to see if the name is valid
@@ -22,7 +26,25 @@ public class CourseNameValidator {
 	 * @param name the name to test 
 	 * @return true if the mane is valid false otherwise
 	 */
-	public boolean isValid(String name){
+	public boolean isValid(String name) throws InvalidTransitionException{
+	
+		
+		int charIndex = 0;
+		char ch;
+		
+		while(charIndex < name.length()) {
+			ch = name.charAt(charIndex);
+			
+			if(Character.isLetter(ch)) {
+				currentState.onLetter();
+			}
+			else if(Character.isDigit(ch)) {
+				currentState.onDigit();
+			} 
+			else {
+				currentState.onOther();
+			}
+		}
 		return validEndState;
 	}
 	
@@ -43,11 +65,32 @@ public class CourseNameValidator {
 		}
 		
 		/**
+		 * inner inner class that is an initial state
+		 * @author Sam
+		 *
+		 */
+		private class InitialState extends State {
+
+			@Override
+			public void onLetter() {
+				letterCount++;
+				currentState = new LetterState();
+			}
+
+			@Override
+			public void onDigit() throws InvalidTransitionException {
+				throw new InvalidTransitionException();
+			}
+
+		}
+		
+		
+		/**
 		 * inner inner class that is a letter state
 		 * @author Sam
 		 *
 		 */
-		public class LetterState extends State {
+		private class LetterState extends State {
 
 			private static final int MAX_PREFIX_LETTERS = 4;
 
@@ -76,7 +119,7 @@ public class CourseNameValidator {
 		 * @author Sam
 		 *
 		 */
-		public class SuffixState extends State {
+		private class SuffixState extends State {
 
 			@Override
 			public void onLetter() throws InvalidTransitionException {
@@ -93,31 +136,11 @@ public class CourseNameValidator {
 		}
 		
 		/**
-		 * inner inner class that is an initial state
-		 * @author Sam
-		 *
-		 */
-		public class InitialState extends State {
-
-			@Override
-			public void onLetter() {
-				letterCount++;
-				currentState = new LetterState();
-			}
-
-			@Override
-			public void onDigit() throws InvalidTransitionException {
-				throw new InvalidTransitionException();
-			}
-
-		}
-		
-		/**
 		 * inner inner class that is a number state
 		 * @author Sam
 		 *
 		 */
-		public class NumberState extends State {
+		private class NumberState extends State {
 
 			private static final int COURSE_NUMBER_LENGTH = 3;
 
