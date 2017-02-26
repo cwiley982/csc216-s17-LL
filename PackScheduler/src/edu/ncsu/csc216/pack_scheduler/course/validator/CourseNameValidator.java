@@ -23,8 +23,11 @@ public class CourseNameValidator {
 	/**
 	 * Tests to see if the name is valid
 	 * 
-	 * @param name the name to test 
+	 * @param name
+	 *            the name to test
 	 * @return true if the mane is valid false otherwise
+	 * @throws InvalidTransitionException
+	 *             if the ID deviates from the allowed pattern
 	 */
 	public boolean isValid(String name) throws InvalidTransitionException{
 		//Resets class counters for repeated use
@@ -59,11 +62,28 @@ public class CourseNameValidator {
 	 *
 	 */
 	public abstract class State {
-		/**Method if the input is a letter */
+		/**
+		 * Method if the input is a letter
+		 * 
+		 * @throws InvalidTransitionException
+		 *             if the ID deviates from the allowed pattern
+		 */
 		public abstract void onLetter() throws InvalidTransitionException;
-		/**Method if the input is a digit */
+
+		/**
+		 * Method if the input is a digit
+		 * 
+		 * @throws InvalidTransitionException
+		 *             if the ID deviates from the allowed pattern
+		 */
 		public abstract void onDigit() throws InvalidTransitionException;
-		/**Method if the input is other */
+
+		/**
+		 * Method if the input is other
+		 * 
+		 * @throws InvalidTransitionException
+		 *             if the ID deviates from the allowed pattern
+		 */
 		public void onOther() throws InvalidTransitionException {
 			throw new InvalidTransitionException("Course name can only contain letters and digits.");
 		}
