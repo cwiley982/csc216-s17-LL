@@ -79,7 +79,7 @@ public class CourseNameValidator {
 		public abstract void onDigit() throws InvalidTransitionException;
 
 		/**
-		 * Method if the input is other
+		 * Method if the input is something other than a letter or number
 		 * 
 		 * @throws InvalidTransitionException
 		 *             if the ID deviates from the allowed pattern
