@@ -48,7 +48,7 @@ public class CourseNameValidatorFSMTest {
 		}
 		/*test start with non letter or number*/
 		try{
-			assert fsm.isValid("!16CSC");
+			fsm.isValid("!16CSC");
 			fail();
 		}
 		catch(InvalidTransitionException e)
@@ -58,7 +58,7 @@ public class CourseNameValidatorFSMTest {
 		
 		/*test start with more than four letters*/
 		try{
-			assert fsm.isValid("Claire216");
+			fsm.isValid("Claire216");
 			fail();
 		}
 		catch(InvalidTransitionException e)
@@ -67,7 +67,7 @@ public class CourseNameValidatorFSMTest {
 		}
 		/*test end with multiple letters*/
 		try{
-			assert fsm.isValid("CSC216Awesome");
+			fsm.isValid("CSC216Awesome");
 			fail();
 		}
 		catch(InvalidTransitionException e)
@@ -140,7 +140,7 @@ public class CourseNameValidatorFSMTest {
 			
 		/* test letters, 1 number, letter */
 		try {
-			assert !fsm.isValid("CSC2C");
+			fsm.isValid("CSC2C");
 			fail();
 		} catch (InvalidTransitionException e) {
 			assertEquals("Course name must have 3 digits.", e.getMessage());
@@ -148,7 +148,7 @@ public class CourseNameValidatorFSMTest {
 		
 		/* test letters, 2 numbers, letter */
 		try {
-			assert !fsm.isValid("CSC21C");
+			fsm.isValid("CSC21C");
 			fail();
 		} catch (InvalidTransitionException e) {
 			assertEquals("Course name must have 3 digits.", e.getMessage());
@@ -156,7 +156,7 @@ public class CourseNameValidatorFSMTest {
 		
 		/* test number after suffix */
 		try {
-			assert !fsm.isValid("CSC216C2");
+			fsm.isValid("CSC216C2");
 			fail();
 		} catch (InvalidTransitionException e) {
 			assertEquals("Course name cannot contain digits after the suffix.", e.getMessage());
@@ -164,7 +164,7 @@ public class CourseNameValidatorFSMTest {
 
 		/* test punctuation after suffix */
 		try {
-			assert !fsm.isValid("CSC216C!");
+			fsm.isValid("CSC216C!");
 			fail();
 		} catch (InvalidTransitionException e) {
 			// skip
