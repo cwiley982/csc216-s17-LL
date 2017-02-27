@@ -190,18 +190,23 @@ public class PackSchedulerGUI {
 				
 				RegistrationManager manager = RegistrationManager.getInstance();
 				try {
-				if (manager.login(id, password)) {
+					if (manager.login(id, password)) {
+						txtId.setText("");
+						txtPassword.setText("");
+						if (manager.getCurrentUser() instanceof Student) {
+							cardLayout.show(panel, STUDENT_PANEL);
+						} else {
+							cardLayout.show(panel, REGISTRAR_PANEL);
+						}
+					} else {
+						txtId.setText("");
+						txtPassword.setText("");
+						JOptionPane.showMessageDialog(this, "Invalid id and password.", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					}
+				} catch (IllegalArgumentException iae) {
 					txtId.setText("");
 					txtPassword.setText("");
-					if (manager.getCurrentUser() instanceof Student) {
-						cardLayout.show(panel, STUDENT_PANEL);
-					} else {
-						cardLayout.show(panel, REGISTRAR_PANEL);
-					}
-				} else {
-					JOptionPane.showMessageDialog(this, "Invalid id and password.", "Error", JOptionPane.ERROR_MESSAGE);
-				}
-				} catch (IllegalArgumentException iae) {
 					JOptionPane.showMessageDialog(this, iae.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			} else if (e.getSource() == btnClear) {
