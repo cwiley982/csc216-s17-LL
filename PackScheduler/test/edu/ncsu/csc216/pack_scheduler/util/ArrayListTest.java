@@ -9,7 +9,7 @@ import org.junit.Test;
 
 /**
  * Tests the ArrayList<E> class
- * @author Sam, Claire, Kayleigh
+ * @author Sam, Claire, Caitlyn
  *
  */
 public class ArrayListTest {
