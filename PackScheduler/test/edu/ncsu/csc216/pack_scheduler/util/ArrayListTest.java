@@ -32,7 +32,13 @@ public class ArrayListTest {
 	@Test
 	public void testGet() {
 		ArrayList<String> list = new ArrayList<String>();
-		assertEquals(null, list.get(0));
+		try{
+			assertEquals(null, list.get(0));
+			fail();
+		}
+		catch(IndexOutOfBoundsException e){
+			//skip
+		}
 		//add an element to the beginning
 		list.add(0, "Hi");
 		assertEquals("Hi", list.get(0));
@@ -150,13 +156,10 @@ public class ArrayListTest {
 		list.remove(0);
 		assertEquals("Katherine", list.get(0));
 		assertEquals("Brown", list.get(1));
-		assertNull(list.get(2));
 		assertEquals(2, list.size());
 		//remove at the end
 		list.remove(1); 
 		assertEquals("Katherine", list.get(0));
-		assertNull(list.get(1));
-		assertNull(list.get(2));
 		assertEquals(1, list.size());
 	}
 	/**
