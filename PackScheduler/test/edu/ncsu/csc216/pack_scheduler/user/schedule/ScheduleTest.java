@@ -7,7 +7,6 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import edu.ncsu.csc216.pack_scheduler.course.ConflictException;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
 
 /**
@@ -20,6 +19,9 @@ import edu.ncsu.csc216.pack_scheduler.course.Course;
  */
 public class ScheduleTest {
 
+	/**
+	 * Tests creating a schedule
+	 */
 	@Test
 	public void testSchedule() {
 		Schedule s = new Schedule();
@@ -27,6 +29,10 @@ public class ScheduleTest {
 		assertEquals(0, s.getScheduledCourses().length);
 	}
 
+	/**
+	 * Tests adding courses to a catalog with conflicts, duplicate courses and
+	 * one successful add
+	 */
 	@Test
 	public void testAddCourseToSchedule() {
 		Schedule s = new Schedule();
@@ -37,8 +43,6 @@ public class ScheduleTest {
 			assertTrue(s.addCourseToSchedule(course));
 		} catch (IllegalArgumentException e) {
 			fail();
-		} catch (ConflictException e) {
-			fail();
 		}
 
 		try {
@@ -48,8 +52,6 @@ public class ScheduleTest {
 			fail();
 		} catch (IllegalArgumentException e) {
 			assertEquals("You are already enrolled in CSC216.", e.getMessage());
-		} catch (ConflictException e) {
-			fail();
 		}
 
 		try {
@@ -57,12 +59,14 @@ public class ScheduleTest {
 			s.addCourseToSchedule(course2);
 			fail();
 		} catch (IllegalArgumentException e) {
-			fail();
-		} catch (ConflictException e) {
 			assertEquals("The course cannot be added due to a conflict.", e.getMessage());
 		}
 	}
 
+	/**
+	 * Tests removing a course that can be removed and removing a course that
+	 * isn't in the schedule
+	 */
 	@Test
 	public void testRemoveCourseFromSchedule() {
 		Schedule s = new Schedule();
@@ -73,14 +77,15 @@ public class ScheduleTest {
 			assertTrue(s.addCourseToSchedule(course));
 		} catch (IllegalArgumentException e) {
 			fail();
-		} catch (ConflictException e) {
-			fail();
 		}
 
 		assertTrue(s.removeCourseFromSchedule(course));
 		assertFalse(s.removeCourseFromSchedule(course2));
 	}
 
+	/**
+	 * Tests resetting the schedule
+	 */
 	@Test
 	public void testResetSchedule() {
 		Schedule s = new Schedule();
@@ -91,13 +96,14 @@ public class ScheduleTest {
 			assertTrue(s.addCourseToSchedule(course));
 		} catch (IllegalArgumentException e) {
 			fail();
-		} catch (ConflictException e) {
-			fail();
 		}
 		s.resetSchedule();
 		assertEquals(0, s.getScheduledCourses().length);
 	}
 
+	/**
+	 * Tests getting the 2d array of scheduled courses
+	 */
 	@Test
 	public void testGetScheduledCourses() {
 		Schedule s = new Schedule();
@@ -108,12 +114,13 @@ public class ScheduleTest {
 			assertTrue(s.addCourseToSchedule(course2));
 		} catch (IllegalArgumentException e) {
 			fail();
-		} catch (ConflictException e) {
-			fail();
 		}
 		assertEquals("Discrete Math", s.getScheduledCourses()[1][2]);
 	}
 
+	/**
+	 * Tests setting the schedule's title
+	 */
 	@Test
 	public void testSetTitle() {
 		Schedule s = new Schedule();
