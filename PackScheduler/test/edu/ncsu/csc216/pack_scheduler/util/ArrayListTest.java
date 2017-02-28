@@ -15,7 +15,7 @@ import org.junit.Test;
 public class ArrayListTest {
 
 	/**
-	 * Tests the ArrayList constructor
+	 * Tests the ArrayList constructor 
 	 */
 	@Test
 	public void testArrayList() {
