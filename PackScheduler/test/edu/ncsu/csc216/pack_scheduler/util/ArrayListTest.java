@@ -205,7 +205,7 @@ public class ArrayListTest {
 		assertEquals("Computer", list.get(0));
 		assertEquals("Katherine", list.get(1));
 		assertEquals("Brown", list.get(2));
-		//set in the middle
+		//set in the middle 
 		list.set(1, "Science");
 		assertEquals("Computer", list.get(0));
 		assertEquals("Science", list.get(1));
