@@ -153,7 +153,7 @@ public class ArrayListTest {
 		assertNull(list.get(2));
 		assertEquals(2, list.size());
 		//remove at the end
-		list.remove(1);
+		list.remove(1); 
 		assertEquals("Katherine", list.get(0));
 		assertNull(list.get(1));
 		assertNull(list.get(2));
