@@ -1,5 +1,8 @@
 package edu.ncsu.csc216.pack_scheduler.user;
 
+import edu.ncsu.csc216.pack_scheduler.course.Course;
+import edu.ncsu.csc216.pack_scheduler.util.ArrayList;
+
 /**
  * Outlines a Student object which contains information about students
  * @author kagordo3 ckbrown3 cavandiv
@@ -10,6 +13,8 @@ public class Student extends User implements Comparable<Student> {
 	private int maxCredits;
 	/** Maximum number of credit hours for any student */
 	public static final int MAX_CREDITS = 18;
+	/**The student's schedule of courses*/
+	ArrayList<Course> schedule = new ArrayList<Course>();
 
 	/**
 	 * Constructs a Student with values for all fields
