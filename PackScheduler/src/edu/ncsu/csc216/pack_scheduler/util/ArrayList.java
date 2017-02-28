@@ -99,7 +99,7 @@ public class ArrayList<E> {
 		for (int i = index; i < size; i++) {
 			list[i] = list[i + 1];
 		}
-		list[size - 1] = null;
+		list[size - 1] = null; 
 		size--;
 		return removedElement; 
 	}
