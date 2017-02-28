@@ -91,15 +91,17 @@ public class ArrayList<E> {
 	 * @param index
 	 *            where to remove the element from
 	 */
-	public void remove(int index) {
+	public E remove(int index) {
 		if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
 		}
+		E removedElement = this.get(index);
 		for (int i = index; i < size; i++) {
 			list[i] = list[i + 1];
 		}
 		list[size - 1] = null;
 		size--;
+		return removedElement; 
 	}
 
 	/**
@@ -111,7 +113,7 @@ public class ArrayList<E> {
 	 * @param element
 	 *            the element to set
 	 */
-	public void set(int index, E element) {
+	public E set(int index, E element) {
 		if (element == null) {
 			throw new NullPointerException();
 		} else if (index < 0 || index > size) {
@@ -123,6 +125,7 @@ public class ArrayList<E> {
 			}
 		}
 		list[index] = element;
+		return element;
 	}
 	/**
 	 * Ensures that the list has enough room to add the element, if not a new,
