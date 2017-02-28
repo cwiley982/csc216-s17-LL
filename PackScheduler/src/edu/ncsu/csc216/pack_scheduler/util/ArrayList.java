@@ -38,7 +38,9 @@ public class ArrayList<E> {
 	 * @return the object at the specified index
 	 */
 	public E get(int index) {
-		if (size != 0) {
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		} else if (size != 0) {
 			return (E) list[index];
 		} else {
 			return null;
@@ -92,7 +94,7 @@ public class ArrayList<E> {
 	 * @return E the element removed
 	 */
 	public E remove(int index) {
-		if (index < 0 || index > size) {
+		if (index < 0 || index >= size) {
 			throw new IndexOutOfBoundsException();
 		}
 		E removedElement = this.get(index);
@@ -117,7 +119,7 @@ public class ArrayList<E> {
 	public E set(int index, E element) {
 		if (element == null) {
 			throw new NullPointerException();
-		} else if (index < 0 || index > size) {
+		} else if (index < 0 || index >= size) {
 			throw new IndexOutOfBoundsException();
 		}
 		for (int i = 0; i < size; i++) {

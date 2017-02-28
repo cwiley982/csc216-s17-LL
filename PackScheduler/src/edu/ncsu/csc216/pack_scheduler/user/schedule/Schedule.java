@@ -29,7 +29,7 @@ public class Schedule {
 	 */
 	public boolean addCourseToSchedule(Course c) throws IllegalArgumentException {
 		for(int i = 0; i < schedule.size(); i++) {
-			if(c.equals(schedule.get(i))) {
+			if (c.isDuplicate(schedule.get(i))) {
 				throw new IllegalArgumentException("You are already enrolled in " + schedule.get(i).getName() + ".");
 			}
 			try {
