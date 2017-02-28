@@ -10,6 +10,14 @@ import org.junit.Test;
 import edu.ncsu.csc216.pack_scheduler.course.ConflictException;
 import edu.ncsu.csc216.pack_scheduler.course.Course;
 
+/**
+ * Tests the functionality of the Schedule class
+ * 
+ * @author Caitlyn
+ * @author Sam
+ * @author Claire
+ *
+ */
 public class ScheduleTest {
 
 	@Test
