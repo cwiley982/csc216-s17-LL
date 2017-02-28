@@ -26,7 +26,6 @@ public class ArrayList<E> {
 	 */
 	@SuppressWarnings("unchecked")
 	public ArrayList() {
-		E item = (E)(new Object());
 		list = (E[])(new Object[INIT_SIZE]);
 		size = 0;
 	}
@@ -90,6 +89,7 @@ public class ArrayList<E> {
 	 * 
 	 * @param index
 	 *            where to remove the element from
+	 * @return E the element removed
 	 */
 	public E remove(int index) {
 		if (index < 0 || index > size) {
@@ -112,6 +112,7 @@ public class ArrayList<E> {
 	 *            the index to set the element to
 	 * @param element
 	 *            the element to set
+	 * @return E the element that was set
 	 */
 	public E set(int index, E element) {
 		if (element == null) {
@@ -126,6 +127,16 @@ public class ArrayList<E> {
 		}
 		list[index] = element;
 		return element;
+	}
+
+	/**
+	 * Tells whether the list is empty or not
+	 * 
+	 * @return true if the list is empty, false if it contains at least one
+	 *         element
+	 */
+	public boolean isEmpty() {
+		return size == 0;
 	}
 	/**
 	 * Ensures that the list has enough room to add the element, if not a new,
