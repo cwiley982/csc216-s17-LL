@@ -3,12 +3,14 @@
  */
 package edu.ncsu.csc216.pack_scheduler.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 /**
- * Tests the ArrayList<E> class
+ * Tests the ArrayList class
+ * 
  * @author Sam, Claire, Caitlyn
  *
  */
