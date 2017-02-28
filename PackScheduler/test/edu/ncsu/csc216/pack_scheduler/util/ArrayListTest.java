@@ -157,7 +157,7 @@ public class ArrayListTest {
 		assertEquals("Katherine", list.get(0));
 		assertEquals("Brown", list.get(1));
 		assertEquals(2, list.size());
-		//remove at the end
+		//remove at the end 
 		list.remove(1); 
 		assertEquals("Katherine", list.get(0));
 		assertEquals(1, list.size());
