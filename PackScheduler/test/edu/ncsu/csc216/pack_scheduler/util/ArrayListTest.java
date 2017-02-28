@@ -165,7 +165,7 @@ public class ArrayListTest {
 	@Test
 	public void testSet(){
 		ArrayList<String> list = new ArrayList<String>();
-		list.add(0, "Claire");
+		list.add(0, "Claire"); 
 		list.add(1, "Katherine");
 		list.add(2, "Brown"); 
 		//attempt to set a null element
