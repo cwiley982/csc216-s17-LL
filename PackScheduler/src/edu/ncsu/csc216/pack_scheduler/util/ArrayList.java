@@ -127,8 +127,9 @@ public class ArrayList<E> {
 				throw new IllegalArgumentException();
 			}
 		}
+		E oldElement = list[index];
 		list[index] = element;
-		return element;
+		return oldElement;
 	}
 
 	/**

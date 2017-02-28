@@ -51,7 +51,7 @@ public class ScheduleTest {
 			s.addCourseToSchedule(course);
 			fail();
 		} catch (IllegalArgumentException e) {
-			assertEquals("You are already enrolled in CSC216.", e.getMessage());
+			assertEquals("You are already enrolled in CSC216", e.getMessage());
 		}
 
 		try {
