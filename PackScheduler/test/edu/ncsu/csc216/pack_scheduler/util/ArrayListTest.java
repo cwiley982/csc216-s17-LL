@@ -36,7 +36,7 @@ public class ArrayListTest {
 		//add an element to the beginning
 		list.add(0, "Hi");
 		assertEquals("Hi", list.get(0));
-		//adds an element and retrives in the middle
+		//adds an element and retrieves in the middle
 		list.add(5, "Sup");
 		assertEquals("Sup", list.get(5));
 		//adds an element and retrieves at the end
@@ -151,13 +151,13 @@ public class ArrayListTest {
 		assertEquals("Katherine", list.get(0));
 		assertEquals("Brown", list.get(1));
 		assertNull(list.get(2));
-		assertEquals(2,list.size());
+		assertEquals(2, list.size());
 		//remove at the end
 		list.remove(1);
 		assertEquals("Katherine", list.get(0));
 		assertNull(list.get(1));
 		assertNull(list.get(2));
-		assertEquals(1,list.size());
+		assertEquals(1, list.size());
 	}
 	/**
 	 * Tests the set method
