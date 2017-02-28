@@ -9,7 +9,7 @@ import edu.ncsu.csc216.pack_scheduler.util.ArrayList;
  */
 public class Student extends User implements Comparable<Student> {
 	
-	/** Student's maximum number of credit hours */
+	/** Student's maximum number of credit hours */ 
 	private int maxCredits;
 	/** Maximum number of credit hours for any student */
 	public static final int MAX_CREDITS = 18;
