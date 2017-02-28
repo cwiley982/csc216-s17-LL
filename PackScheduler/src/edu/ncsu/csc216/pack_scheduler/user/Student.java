@@ -20,7 +20,7 @@ public class Student extends User implements Comparable<Student> {
 	 * @param firstName student first name
 	 * @param lastName student last name
 	 * @param id student id
-	 * @param email student email
+	 * @param email student email 
 	 * @param password student hashed password
 	 * @param maxCredits student maximum credit hours
 	 */
