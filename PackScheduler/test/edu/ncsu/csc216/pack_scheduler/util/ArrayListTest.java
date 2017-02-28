@@ -32,16 +32,16 @@ public class ArrayListTest {
 	@Test
 	public void testGet() {
 		ArrayList<String> list = new ArrayList<String>();
-		assertEquals("", list.get(0));
+		assertEquals(null, list.get(0));
 		//add an element to the beginning
 		list.add(0, "Hi");
 		assertEquals("Hi", list.get(0));
 		//adds an element and retrieves in the middle
-		list.add(5, "Sup");
-		assertEquals("Sup", list.get(5));
+		list.add(1, "Sup");
+		assertEquals("Sup", list.get(1));
 		//adds an element and retrieves at the end
-		list.add(9, "Hello");
-		assertEquals("Hello", list.get(5));
+		list.add(2, "Hello");
+		assertEquals("Hello", list.get(2));
 	}
 	/**
 	 * Tests the size method of the Array List
@@ -53,8 +53,8 @@ public class ArrayListTest {
 		//add an element and then test that when we have that functionality
 		list.add(0, "Hi");
 		assertEquals(1, list.size());
-		list.add(1, "Hi");
-		list.add(2, "Hi");
+		list.add(1, "Yo");
+		list.add(2, "Hello");
 		assertEquals(3, list.size());
 	}
 	/**
@@ -110,13 +110,13 @@ public class ArrayListTest {
 		assertEquals("Claire", list.get(1));
 		assertEquals("Chocolate", list.get(2));
 		//attempts to add when size = capacity. Should be able to handle
-		list.add(3, "Happiness!");
-		list.add(4, "Happiness!");
-		list.add(5, "Happiness!");
-		list.add(6, "Happiness!");
-		list.add(7, "Happiness!");
-		list.add(8, "Happiness!");
-		list.add(9, "Happiness!");
+		list.add(3, "Joy");
+		list.add(4, "Super");
+		list.add(5, "Fun");
+		list.add(6, "Words");
+		list.add(7, "Are");
+		list.add(8, "Cool");
+		list.add(9, "Sweet!");
 		list.add(10, "You got it!");
 	}
 	/**
@@ -139,7 +139,7 @@ public class ArrayListTest {
 		}
 		//attempt to remove at and index greater than size
 		try{
-			list.remove(2);
+			list.remove(4);
 			fail();
 		}
 		catch(IndexOutOfBoundsException e)
