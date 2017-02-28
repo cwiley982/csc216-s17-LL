@@ -91,4 +91,16 @@ public class Schedule {
 		ArrayList<Course> c = new ArrayList<Course>();
 		schedule = c;
 	}
+	
+	/**
+	 * Sets the schedule's title
+	 * @param s the title to set
+	 * @throws IllegalArgumentException if the paramater is null
+	 */
+	public void setTitle(String s) throws IllegalArgumentException {
+		if(s == null) {
+			throw new IllegalArgumentException("Title cannot be null.");
+		}
+		title = s;
+	}
 }
