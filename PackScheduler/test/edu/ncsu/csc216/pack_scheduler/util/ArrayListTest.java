@@ -175,7 +175,7 @@ public class ArrayListTest {
 		list.add(2, "Brown"); 
 		//attempt to set a null element
 		try{
-			list.set(0, null);
+			list.set(0, null); 
 			fail();
 		}
 		catch(NullPointerException e){
