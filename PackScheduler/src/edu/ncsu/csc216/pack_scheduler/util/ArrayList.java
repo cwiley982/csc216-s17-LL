@@ -38,7 +38,7 @@ public class ArrayList<E> {
 	 *            the index to return an object from
 	 * @return the object at the specified index
 	 */
-	public Object get(int index) {
+	public E get(int index) {
 		if (size != 0) {
 			return (E) list[index];
 		} else {
