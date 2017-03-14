@@ -102,7 +102,7 @@ public class LinkedAbstractListTest {
 		catch(IndexOutOfBoundsException e){
 			//skip
 		}
-		//adds in the middle
+		// add at the end
 		list.add(1, "Chocolate");
 		assertEquals(2, list.size());
 		assertEquals("Chocolate", list.get(1));
