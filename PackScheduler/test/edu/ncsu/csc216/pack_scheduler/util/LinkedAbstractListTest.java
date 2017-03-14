@@ -5,13 +5,18 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
+/**
+ * Tester class for LinkedAbstractList, this tests using String objects.
+ * @author Sam
+ *
+ */
 public class LinkedAbstractListTest {
 	/**
-	 * Tests the ArrayList constructor 
+	 * Tests the LinkedList constructor 
 	 */
 	@Test
 	public void testLinkedAbstractList() {
-		ArrayList<String> list = new ArrayList<String>();
+		LinkedAbstractList<String> list = new LinkedAbstractList<String>();
 		assertEquals(0, list.size());
 		for(int i = 0; i < list.size(); i++){
 			assertEquals("", list.get(i));
@@ -19,11 +24,11 @@ public class LinkedAbstractListTest {
 	}
 
 	/**
-	 * Tests the get function for the custom array list
+	 * Tests the get function for the custom Linked list
 	 */
 	@Test
 	public void testGet() {
-		ArrayList<String> list = new ArrayList<String>();
+		LinkedAbstractList<String> list = new LinkedAbstractList<String>();
 		try{
 			assertEquals(null, list.get(0));
 			fail();
@@ -42,11 +47,11 @@ public class LinkedAbstractListTest {
 		assertEquals("Hello", list.get(2));
 	}
 	/**
-	 * Tests the size method of the Array List
+	 * Tests the size method of the Linked List
 	 */
 	@Test
 	public void testSize() {
-		ArrayList<String> list = new ArrayList<String>();
+		LinkedAbstractList<String> list = new LinkedAbstractList<String>();
 		assertEquals(0, list.size());
 		//add an element and then test that when we have that functionality
 		list.add(0, "Hi");
@@ -56,11 +61,11 @@ public class LinkedAbstractListTest {
 		assertEquals(3, list.size());
 	}
 	/**
-	 * Tests the add method of the Array List
+	 * Tests the add method of the Linked List
 	 */
 	@Test
 	public void testAdd(){
-		ArrayList<String> list = new ArrayList<String>();
+		LinkedAbstractList<String> list = new LinkedAbstractList<String>();
 		//attempt to add a null element
 		try{
 			list.add(1, null);
@@ -118,11 +123,11 @@ public class LinkedAbstractListTest {
 		list.add(10, "You got it!");
 	}
 	/**
-	 * Tests the remove method for the Array List
+	 * Tests the remove method for the Linked List
 	 */
 	@Test
 	public void testRemove(){
-		ArrayList<String> list = new ArrayList<String>();
+		LinkedAbstractList<String> list = new LinkedAbstractList<String>();
 		list.add(0, "Claire");
 		list.add(1, "Katherine");
 		list.add(2, "Brown");
@@ -155,11 +160,11 @@ public class LinkedAbstractListTest {
 		assertEquals(1, list.size());
 	}
 	/**
-	 * Tests the set method
+	 * Tests the set method of Linked List
 	 */
 	@Test
 	public void testSet(){
-		ArrayList<String> list = new ArrayList<String>();
+		LinkedAbstractList<String> list = new LinkedAbstractList<String>();
 		list.add(0, "Claire"); 
 		list.add(1, "Katherine");
 		list.add(2, "Brown"); 
