@@ -2,13 +2,32 @@ package edu.ncsu.csc216.pack_scheduler.util;
 
 import java.util.AbstractList;
 
+/**
+ * Creates a linked list of objects of type E
+ * 
+ * @author Caitlyn
+ * @author Sam
+ * @author Claire
+ *
+ * @param <E>
+ *            the generic parameter so that the list can contain any object type
+ */
 public class LinkedAbstractList<E> extends AbstractList<E> {
 
+	/** the size of the list */
 	private int size;
+	/** the number of nodes the list can have */
 	private int capacity;
+	/** the first node in the list */
 	private ListNode front;
 
-	public void LinkedAbstractList(int capacity) {
+	/**
+	 * Constructs a linked abstract list and initializes the states
+	 * 
+	 * @param capacity
+	 *            the number of nodes the list can hold
+	 */
+	public LinkedAbstractList(int capacity) {
 		size = 0;
 		if (capacity > 0) {
 			this.capacity = capacity;
@@ -18,6 +37,22 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		front = null;
 	}
 
+	/**
+	 * Constructs a linked abstract list and initializes the states
+	 */
+	public LinkedAbstractList() {
+		size = 0;
+		capacity = 0;
+		front = null;
+	}
+
+	/**
+	 * Gets the node data at the specified index
+	 * 
+	 * @param index
+	 *            the index to get the data from
+	 * @return E the object data at the index specified
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public E get(int index) {
@@ -31,11 +66,23 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		return (E) current.data;
 	}
 
+	/**
+	 * Returns the size of the list
+	 */
 	@Override
 	public int size() {
 		return size;
 	}
 	
+	/**
+	 * Adds a new node to the list at the specified index and links it to the
+	 * nodes before and after it
+	 * 
+	 * @param index
+	 *            the index to add the node at
+	 * @param element
+	 *            the object that the node will hold
+	 */
 	@Override
 	public void add(int index, E element) {
 		if (element == null) {
@@ -64,6 +111,16 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		size++;
 	}
 
+	/**
+	 * Sets a node at the specified index to a different node, size will stay
+	 * the same
+	 * 
+	 * @param index
+	 *            the index to change the node at
+	 * @param element
+	 *            the object to set the node to
+	 * @return E returns the node data that's being set
+	 */
 	@Override
 	public E set(int index, E element) {
 		if (element == null) {
@@ -81,7 +138,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 				current = current.next;
 			}
 			if (front.next == null) {
-				front = new ListNode(element, null);
+				front = new ListNode(element);
 			} else {
 				front = new ListNode(element, front.next);
 			}
@@ -108,6 +165,13 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		return element;
 	}
 
+	/**
+	 * Removes a node from the specified index
+	 * 
+	 * @param index
+	 *            the index to remove the node from
+	 * @return E the node that was removed
+	 */
 	@Override
 	public E remove(int index) {
 		if (index < 0 || index >= size) {
@@ -129,19 +193,53 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		return removedNode.data;
 	}
 
+	/**
+	 * Creates a node that will be held in the outer class LinkedAbstractList
+	 * 
+	 * @author Caitlyn
+	 * @author Sam
+	 * @author Claire
+	 *
+	 */
 	private class ListNode {
+		/** the object that is being stored in the node */
 		private E data;
+		/** a reference to the next node in the list */
 		private ListNode next;
 		
+		/**
+		 * Constructs a node with an object and no next node reference
+		 * 
+		 * @param data
+		 *            the object being stored
+		 */
 		public ListNode(E data){
 			this.data = data;
+			next = null;
 		}
 
+		/**
+		 * Constructs a node with an object and a reference to the next node in
+		 * the list
+		 * 
+		 * @param data
+		 *            the object being stored
+		 * @param next
+		 *            the next node in the list
+		 */
 		public ListNode(E data, ListNode next){
 			this.data = data;
 			this.next = next;
 		}
 
+		/**
+		 * Determines if the object in the node is equal to the object passed
+		 * into the method
+		 * 
+		 * @param Object
+		 *            the object being checked for a duplicate
+		 * @return boolean true if the objects are equal, false otherwise
+		 */
 		@Override
 		public boolean equals(Object data) {
 			return this.data == data;
