@@ -28,7 +28,7 @@ public class LinkedAbstractListTest {
 	 */
 	@Test
 	public void testGet() {
-		LinkedAbstractList<String> list = new LinkedAbstractList<String>();
+		LinkedAbstractList<String> list = new LinkedAbstractList<String>(10);
 		try{
 			assertEquals(null, list.get(0));
 			fail();
@@ -51,7 +51,7 @@ public class LinkedAbstractListTest {
 	 */
 	@Test
 	public void testSize() {
-		LinkedAbstractList<String> list = new LinkedAbstractList<String>();
+		LinkedAbstractList<String> list = new LinkedAbstractList<String>(10);
 		assertEquals(0, list.size());
 		//add an element and then test that when we have that functionality
 		list.add(0, "Hi");
@@ -65,7 +65,7 @@ public class LinkedAbstractListTest {
 	 */
 	@Test
 	public void testAdd(){
-		LinkedAbstractList<String> list = new LinkedAbstractList<String>();
+		LinkedAbstractList<String> list = new LinkedAbstractList<String>(10);
 		//attempt to add a null element
 		try{
 			list.add(1, null);
@@ -112,7 +112,6 @@ public class LinkedAbstractListTest {
 		assertEquals("Happiness!", list.get(0));
 		assertEquals("Claire", list.get(1));
 		assertEquals("Chocolate", list.get(2));
-		//attempts to add when size = capacity. Should be able to handle
 		list.add(3, "Joy");
 		list.add(4, "Super");
 		list.add(5, "Fun");
@@ -120,14 +119,21 @@ public class LinkedAbstractListTest {
 		list.add(7, "Are");
 		list.add(8, "Cool");
 		list.add(9, "Sweet!");
-		list.add(10, "You got it!");
+		try{
+			list.add(10, "You got it!");
+			fail();
+		}
+		catch(IllegalArgumentException e)
+		{
+			//skip
+		}
 	}
 	/**
 	 * Tests the remove method for the Linked List
 	 */
 	@Test
 	public void testRemove(){
-		LinkedAbstractList<String> list = new LinkedAbstractList<String>();
+		LinkedAbstractList<String> list = new LinkedAbstractList<String>(10);
 		list.add(0, "Claire");
 		list.add(1, "Katherine");
 		list.add(2, "Brown");
@@ -164,7 +170,7 @@ public class LinkedAbstractListTest {
 	 */
 	@Test
 	public void testSet(){
-		LinkedAbstractList<String> list = new LinkedAbstractList<String>();
+		LinkedAbstractList<String> list = new LinkedAbstractList<String>(10);
 		list.add(0, "Claire"); 
 		list.add(1, "Katherine");
 		list.add(2, "Brown"); 

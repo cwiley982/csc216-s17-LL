@@ -53,7 +53,6 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	 *            the index to get the data from
 	 * @return E the object data at the index specified
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public E get(int index) {
 		if (index < 0 || index >= size) {
@@ -85,12 +84,14 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	 */
 	@Override
 	public void add(int index, E element) {
-		if (element == null) {
+		if (size == capacity){
+			throw new IllegalArgumentException();
+		}
+		else if (element == null) {
 			throw new NullPointerException();
 		} else if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
 		}
-
 		ListNode currentCheck = front;
 		for (int i = 0; i < size; i++) { //checks entire list for a duplicate
 			if (currentCheck.equals(element)) {
