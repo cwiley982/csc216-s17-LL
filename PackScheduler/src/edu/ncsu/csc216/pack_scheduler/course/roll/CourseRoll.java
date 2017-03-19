@@ -19,7 +19,7 @@ public class CourseRoll {
 	 * @param cap the maximum capacity to set.
 	 */
 	public CourseRoll(int cap) {
-		roll = new LinkedAbstractList<Student>();
+		roll = new LinkedAbstractList<Student>(250);
 		setEnrollmentCap(cap);
 	}
 
@@ -65,7 +65,7 @@ public class CourseRoll {
 				throw new IllegalArgumentException();
 			}
 		}
-		roll.add(s);
+		roll.add(roll.size(), s);
 	}
 	/**
 	 * Method that removes a student from a roll
