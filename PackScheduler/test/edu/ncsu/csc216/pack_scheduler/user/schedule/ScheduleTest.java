@@ -38,7 +38,7 @@ public class ScheduleTest {
 		Schedule s = new Schedule();
 		assertEquals(s.getTitle(), "My Schedule");
 		try {
-			Course course = new Course("CSC216", "Intro to Programming - Java", "001", 3, "cjwiley2", "MWF", 1230,
+			Course course = new Course("CSC216", "Intro to Programming - Java", "001", 3, "cjwiley2", 50, "MWF", 1230,
 					1330);
 			assertTrue(s.addCourseToSchedule(course));
 		} catch (IllegalArgumentException e) {
@@ -46,7 +46,7 @@ public class ScheduleTest {
 		}
 
 		try {
-			Course course = new Course("CSC216", "Intro to Programming - Java", "001", 3, "cjwiley2", "MWF", 1230,
+			Course course = new Course("CSC216", "Intro to Programming - Java", "001", 3, "cjwiley2", 50, "MWF", 1230,
 					1330);
 			s.addCourseToSchedule(course);
 			fail();
@@ -55,7 +55,7 @@ public class ScheduleTest {
 		}
 
 		try {
-			Course course2 = new Course("CSC226", "Discrete Math", "002", 3, "cjwiley2", "MF", 1300, 1400);
+			Course course2 = new Course("CSC226", "Discrete Math", "002", 3, "cjwiley2", 50, "MF", 1300, 1400);
 			s.addCourseToSchedule(course2);
 			fail();
 		} catch (IllegalArgumentException e) {
@@ -71,8 +71,8 @@ public class ScheduleTest {
 	public void testRemoveCourseFromSchedule() {
 		Schedule s = new Schedule();
 		assertEquals(s.getTitle(), "My Schedule");
-		Course course = new Course("CSC216", "Intro to Programming - Java", "001", 3, "cjwiley2", "MWF", 1230, 1330);
-		Course course2 = new Course("CSC226", "Discrete Math", "002", 3, "cjwiley2", "MF", 1300, 1400);
+		Course course = new Course("CSC216", "Intro to Programming - Java", "001", 3, "cjwiley2", 50, "MWF", 1230, 1330);
+		Course course2 = new Course("CSC226", "Discrete Math", "002", 3, "cjwiley2", 50, "MF", 1300, 1400);
 		try {
 			assertTrue(s.addCourseToSchedule(course));
 		} catch (IllegalArgumentException e) {
@@ -91,7 +91,7 @@ public class ScheduleTest {
 		Schedule s = new Schedule();
 		assertEquals(s.getTitle(), "My Schedule");
 		try {
-			Course course = new Course("CSC216", "Intro to Programming - Java", "001", 3, "cjwiley2", "MWF", 1230,
+			Course course = new Course("CSC216", "Intro to Programming - Java", "001", 3, "cjwiley2", 50, "MWF", 1230,
 					1330);
 			assertTrue(s.addCourseToSchedule(course));
 		} catch (IllegalArgumentException e) {
@@ -107,8 +107,8 @@ public class ScheduleTest {
 	@Test
 	public void testGetScheduledCourses() {
 		Schedule s = new Schedule();
-		Course course = new Course("CSC216", "Intro to Programming - Java", "001", 3, "cjwiley2", "MWF", 1230, 1330);
-		Course course2 = new Course("CSC226", "Discrete Math", "002", 3, "cjwiley2", "MF", 1400, 1500);
+		Course course = new Course("CSC216", "Intro to Programming - Java", "001", 3, "cjwiley2", 50, "MWF", 1230, 1330);
+		Course course2 = new Course("CSC226", "Discrete Math", "002", 3, "cjwiley2", 50, "MF", 1400, 1500);
 		try {
 			assertTrue(s.addCourseToSchedule(course));
 			assertTrue(s.addCourseToSchedule(course2));
