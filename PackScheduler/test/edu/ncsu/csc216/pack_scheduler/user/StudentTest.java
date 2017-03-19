@@ -390,7 +390,7 @@ public class StudentTest {
 		Student s1 = new Student("bobby", "plumbus", "baplum", "email@ncsu.edu", "hashedpassword", 17);
 		Course c = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", 10, "MW", 1330, 1445);
 		//Should be able to add
-		assert (s1.canAdd(c));
+		assert (s1.canAdd(c)); 
 		s1.setMaxCredits(3);
 		//Should not be able to add
 		assertFalse(s1.canAdd(c));
