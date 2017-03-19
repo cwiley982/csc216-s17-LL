@@ -250,9 +250,12 @@ public class Course extends Activity implements Comparable<Course>
 	{
 		 if (getMeetingDays().equals("A")) 
 		 {
-		        return name + "," + getTitle() + "," + section + "," + credits + "," + instructorId + "," + getCourseRoll() + "," + getMeetingDays();
+			return name + "," + getTitle() + "," + section + "," + credits + "," + instructorId + ","
+					+ getCourseRoll().getEnrollmentCap() + "," + getMeetingDays();
 		 }
-		 return name + "," + getTitle() + "," + section + "," + credits + "," + instructorId + "," + getCourseRoll() + "," + getMeetingDays() + "," + getStartTime() + "," + getEndTime();
+		return name + "," + getTitle() + "," + section + "," + credits + "," + instructorId + ","
+				+ getCourseRoll().getEnrollmentCap() + "," + getMeetingDays() + "," + getStartTime() + ","
+				+ getEndTime();
 	}
 	
 	/** Generates a hashCode for Course using all fields
