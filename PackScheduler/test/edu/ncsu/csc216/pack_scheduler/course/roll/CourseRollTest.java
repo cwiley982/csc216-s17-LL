@@ -74,13 +74,14 @@ public class CourseRollTest {
 		r.enroll(i);
 		r.enroll(j);
 		r.enroll(k);
-		r.enroll(l);
+		
 		
 		try {
-			r.setEnrollmentCap(11);
+			r.setEnrollmentCap(10);
 			fail();
 		} catch(IllegalArgumentException e) {
 			assertEquals(r.getEnrollmentCap(), 90);
+			assertEquals(r.getOpenSeats(), 79);
 		}
 		
 		
