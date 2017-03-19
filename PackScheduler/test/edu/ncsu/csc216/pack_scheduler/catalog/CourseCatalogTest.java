@@ -33,7 +33,7 @@ public class CourseCatalogTest {
 	@Test
 	public void testEmptyCatalog(){
 		CourseCatalog c = new CourseCatalog();
-		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", "MTWHF", 100, 1600);
+		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", 10, "MTWHF", 100, 1600);
 		c.newCourseCatalog();
 		assertEquals(0, c.getCourseCatalog().length);
 	}
@@ -76,7 +76,7 @@ public class CourseCatalogTest {
 		CourseCatalog c = new CourseCatalog();
 		/**attempts to add an invalid course*/
 		try{
-			c.addCourseToCatalog("q", "q", "1", 19, "dfwo", "z", 0, 0);
+			c.addCourseToCatalog("q", "q", "1", 19, "dfwo", 10, "z", 0, 0);
 			fail();
 		}
 		catch(IllegalArgumentException e){
@@ -84,7 +84,7 @@ public class CourseCatalogTest {
 		}
 		
 		/**attempts to add a valid course*/
-		c.addCourseToCatalog("ZP181", "Zoo Penguin Dance", "001", 4, "cavandiv", "MTWHF", 100, 1600);
+		c.addCourseToCatalog("ZP181", "Zoo Penguin Dance", "001", 4, "cavandiv", 10, "MTWHF", 100, 1600);
 		assertEquals(1, c.getCourseCatalog().length);
 	}
 	/**
@@ -94,7 +94,7 @@ public class CourseCatalogTest {
 	public void testRemoveCourse(){
 		CourseCatalog c = new CourseCatalog();
 		/**attempts to remove a course within the CourseCatalog*/
-		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", "MTWHF", 100, 1600);
+		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", 10, "MTWHF", 100, 1600);
 		c.removeCourseFromCatalog("ZPD181", "001");
 		assertEquals(0, c.getCourseCatalog().length);
 		
@@ -113,8 +113,8 @@ public class CourseCatalogTest {
 		assertNull(c.getCourseFromCatalog("CSC216", "001"));
 		
 		/**Attempts to get a course within the CourseCatalog*/
-		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", "MTWHF", 100, 1600);
-		Course course = new Course("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", "MTWHF", 100, 1600);
+		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", 10, "MTWHF", 100, 1600);
+		Course course = new Course("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", 10, "MTWHF", 100, 1600);
 		assertEquals(course, c.getCourseFromCatalog("ZPD181", "001"));	
 	}
 	/**
@@ -123,8 +123,8 @@ public class CourseCatalogTest {
 	@Test
 	public void testGetCourseCatalog(){
 		CourseCatalog c = new CourseCatalog();
-		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandivd", "MTWHF", 100, 1600);
-		c.addCourseToCatalog("CC222", "COOKIES!", "001", 3, "ckbrown3", "MTF", 1300, 1800);
+		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandivd", 10, "MTWHF", 100, 1600);
+		c.addCourseToCatalog("CC222", "COOKIES!", "001", 3, "ckbrown3", 10, "MTF", 1300, 1800);
 		assertEquals("CC222", c.getCourseCatalog()[0][0]);
 		assertEquals("ZPD181", c.getCourseCatalog()[1][0]);
 		
@@ -136,8 +136,8 @@ public class CourseCatalogTest {
 	@Test
 	public void testSaveCourseCatalog(){
 		CourseCatalog c = new CourseCatalog();
-		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", "MTWHF", 100, 1600);
-		c.addCourseToCatalog("CC222", "COOKIES!", "001", 3, "ckbrown3", "MTF", 1300, 1800);
+		c.addCourseToCatalog("ZPD181", "Zoo Penguin Dance", "001", 4, "cavandiv", 10, "MTWHF", 100, 1600);
+		c.addCourseToCatalog("CC222", "COOKIES!", "001", 3, "ckbrown3", 10, "MTF", 1300, 1800);
 		 //tries to save CourseCatalog to a valid file
 		c.saveCourseCatalog("test-files/Empty_File.txt");
 		try{
