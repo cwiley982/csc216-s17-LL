@@ -388,6 +388,12 @@ public class Course extends Activity implements Comparable<Course>
 			return compareToVal;
 		}
 	}
+
+	/**
+	 * Gets the students enrolled in the course
+	 * 
+	 * @return a CourseRoll containing students in the class
+	 */
 	public CourseRoll getCourseRoll(){
 		return roll;
 	}

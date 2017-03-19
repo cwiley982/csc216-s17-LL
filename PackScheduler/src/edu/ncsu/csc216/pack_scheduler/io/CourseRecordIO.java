@@ -74,6 +74,7 @@ public class CourseRecordIO {
 		readInput.useDelimiter(",");
 		Course c = null;
 		int courseCredits;
+		int enrollmentCap;
 		try
 		{
 			String courseName = readInput.next();
@@ -81,19 +82,20 @@ public class CourseRecordIO {
 			String courseSection = readInput.next();
 			courseCredits = Integer.parseInt(readInput.next());
 			String instructorID = readInput.next();
+			enrollmentCap = Integer.parseInt(readInput.next());
 			String courseMeetDays = readInput.next();
 				
 			if (!courseMeetDays.equals("A"))
 			{
 				int startTime = readInput.nextInt();
 				int endTime = readInput.nextInt();
-				c = new Course(courseName, courseTitle, courseSection, courseCredits, instructorID, courseMeetDays, startTime, endTime);
+				c = new Course(courseName, courseTitle, courseSection, courseCredits, instructorID, enrollmentCap, courseMeetDays, startTime, endTime);
 			}
 			else
 			{
 				if (!readInput.hasNext())
 				{
-					c = new Course(courseName, courseTitle, courseSection, courseCredits, instructorID, courseMeetDays);
+					c = new Course(courseName, courseTitle, courseSection, courseCredits, instructorID, enrollmentCap, courseMeetDays);
 				}
 				/**if courseMeetDays = "A" then there should be no tokens left**/
 				else
