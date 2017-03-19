@@ -26,6 +26,7 @@ import javax.swing.table.AbstractTableModel;
 
 import edu.ncsu.csc216.pack_scheduler.directory.StudentDirectory;
 import edu.ncsu.csc216.pack_scheduler.manager.RegistrationManager;
+import edu.ncsu.csc216.pack_scheduler.user.Student;
 
 /**
  * Creates a user interface for working with the StudentDirectory.
@@ -85,15 +86,14 @@ public class StudentDirectoryPanel extends JPanel implements ActionListener {
 	private StudentDirectory studentDirectory;
 	
 	/**
-	 * Constructs the StudentDirectoryGUI and sets up the GUI 
-	 * components.
+	 * Constructs the StudentDirectoryGUI and sets up the GUI components.
 	 */
 	public StudentDirectoryPanel() {
 		super(new GridBagLayout());
 		
 		studentDirectory = RegistrationManager.getInstance().getStudentDirectory();
 		
-		//Set up Directory buttons
+		// Set up Directory buttons
 		btnNewStudentList = new JButton("New Student Directory");
 		btnNewStudentList.addActionListener(this);
 		btnLoadStudentList = new JButton("Load Student Directory");
@@ -112,20 +112,21 @@ public class StudentDirectoryPanel extends JPanel implements ActionListener {
 		pnlDirectoryButton.setBorder(boarder);
 		pnlDirectoryButton.setToolTipText("Directory Buttons");
 		
-		//Set up Directory table
+		// Set up Directory table
 		studentDirectoryTableModel = new StudentDirectoryTableModel();
 		tableStudentDirectory = new JTable(studentDirectoryTableModel);
 		tableStudentDirectory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tableStudentDirectory.setPreferredScrollableViewportSize(new Dimension(500, 500));
 		tableStudentDirectory.setFillsViewportHeight(true);
 		
-		scrollStudentDirectory = new JScrollPane(tableStudentDirectory, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollStudentDirectory = new JScrollPane(tableStudentDirectory, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 		boarder = BorderFactory.createTitledBorder(lowerEtched, "Student Directory");
 		scrollStudentDirectory.setBorder(boarder);
 		scrollStudentDirectory.setToolTipText("Student Directory");
 		
-		//Set up Student buttons
+		// Set up Student buttons
 		btnAddStudent = new JButton("Add Student");
 		btnAddStudent.addActionListener(this);
 		btnRemoveStudent = new JButton("Remove Student");
@@ -140,7 +141,7 @@ public class StudentDirectoryPanel extends JPanel implements ActionListener {
 		pnlStudentButtons.setBorder(boarder);
 		pnlStudentButtons.setToolTipText("StudentControls");
 		
-		//Set up Student form
+		// Set up Student form
 		lblFirstName = new JLabel("First Name");
 		lblLastName = new JLabel("Last Name");
 		lblId = new JLabel("ID");
@@ -323,8 +324,9 @@ public class StudentDirectoryPanel extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * {@link StudentDirectoryTableModel} is the object underlying the {@link JTable} object that displays
-	 * the list of Students to the user.
+	 * {@link StudentDirectoryTableModel} is the object underlying the
+	 * {@link JTable} object that displays the list of Students to the user.
+	 * 
 	 * @author Sarah Heckman
 	 */
 	private class StudentDirectoryTableModel extends AbstractTableModel {
@@ -332,13 +334,13 @@ public class StudentDirectoryPanel extends JPanel implements ActionListener {
 		/** ID number used for object serialization. */
 		private static final long serialVersionUID = 1L;
 		/** Column names for the table */
-		private String [] columnNames = {"First Name", "Last Name", "Student ID"};
+		private String[] columnNames = { "First Name", "Last Name", "Student ID" };
 		/** Data stored in the table */
 		private Object [][] data;
 		
 		/**
-		 * Constructs the {@link StudentDirectoryTableModel} by requesting the latest information
-		 * from the {@link RequirementTrackerModel}.
+		 * Constructs the {@link StudentDirectoryTableModel} by requesting the
+		 * latest information from the {@link RequirementTrackerModel}.
 		 */
 		public StudentDirectoryTableModel() {
 			updateData();
@@ -392,7 +394,8 @@ public class StudentDirectoryPanel extends JPanel implements ActionListener {
 		}
 		
 		/**
-		 * Updates the given model with {@link Student} information from the {@link StudentDirectory}.
+		 * Updates the given model with {@link Student} information from the
+		 * {@link StudentDirectory}.
 		 */
 		public void updateData() {
 			data = studentDirectory.getStudentDirectory();
