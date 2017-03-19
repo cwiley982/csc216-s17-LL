@@ -135,7 +135,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 			front = new ListNode(element);
 		}
 		//if the list is not empty
-		else if (front != null)
+		else if (front != null) 
 		{
 			ListNode current = front;
 			ListNode indexToChange = null;
