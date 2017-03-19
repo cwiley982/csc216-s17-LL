@@ -122,9 +122,10 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	 *            the object to set the node to
 	 * @return E returns the node data that's being set
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public E set(int index, E element) {
-		E elementToReturn = element;
+		E elementToReturn = null;
 		if (element == null) {
 			throw new NullPointerException();
 		} else if (index < 0 || index > size) {
@@ -152,6 +153,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 				} else {
 					front = new ListNode(element, front.next);
 				}
+				elementToReturn = (E) front;
 			} else if (index == size) {
 				for (int i = 0; i < size - 1; i++) {
 					if (current.equals(element)) {
@@ -160,10 +162,12 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 					current = current.next;
 				}
 				current.next = new ListNode(element, null);
+				elementToReturn = (E) current.next;
 			} else {
 				for (int i = 0; i < size; i++) {
 					if (i == index - 1) {
 						indexToChange = current;
+						elementToReturn = (E) indexToChange.next;
 					}
 					if (current.equals(element)) {
 						throw new IllegalArgumentException();
