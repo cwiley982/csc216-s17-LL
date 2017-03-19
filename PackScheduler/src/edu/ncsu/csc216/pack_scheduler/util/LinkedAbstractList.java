@@ -129,39 +129,48 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		} else if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
 		}
-		ListNode current = front;
-		ListNode indexToChange = null;
-		if (index == 0) {
-			for (int i = 0; i < size; i++) {
-				if (current.equals(element)) {
-					throw new IllegalArgumentException();
+		//if the list is empty
+		if (front == null && index == 0)
+		{
+			front = new ListNode(element);
+		}
+		//if the list is not empty
+		else if (front != null)
+		{
+			ListNode current = front;
+			ListNode indexToChange = null;
+			if (index == 0) {
+				for (int i = 0; i < size; i++) {
+					if (current.equals(element)) {
+						throw new IllegalArgumentException();
+					}
+					current = current.next;
 				}
-				current = current.next;
-			}
-			if (front.next == null) {
-				front = new ListNode(element);
+				if (front.next == null) {
+					front = new ListNode(element);
+				} else {
+					front = new ListNode(element, front.next);
+				}
+			} else if (index == size) {
+				for (int i = 0; i < size - 1; i++) {
+					if (current.equals(element)) {
+						throw new IllegalArgumentException();
+					}
+					current = current.next;
+				}
+				current.next = new ListNode(element, null);
 			} else {
-				front = new ListNode(element, front.next);
-			}
-		} else if (index == size) {
-			for (int i = 0; i < size - 1; i++) {
-				if (current.equals(element)) {
-					throw new IllegalArgumentException();
+				for (int i = 0; i < size; i++) {
+					if (i == index - 1) {
+						indexToChange = current;
+					}
+					if (current.equals(element)) {
+						throw new IllegalArgumentException();
+					}
+					current = current.next;
 				}
-				current = current.next;
+				indexToChange.next = new ListNode(element, indexToChange.next.next);
 			}
-			current.next = new ListNode(element, null);
-		} else {
-			for (int i = 0; i < size; i++) {
-				if (i == index - 1) {
-					indexToChange = current;
-				}
-				if (current.equals(element)) {
-					throw new IllegalArgumentException();
-				}
-				current = current.next;
-			}
-			indexToChange.next = new ListNode(element, indexToChange.next.next);
 		}
 		return element;
 	}
