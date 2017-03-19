@@ -17,8 +17,8 @@ public class ActivityTest {
 	public void testCheckConflict() 
 	{
 		/**Tests if two non-conflicting activities are shown as non-conflicting**/
-	    Activity a1 = new Course("CSC226", "Discrete Math", "002", 4, "sesmith5", "MW", 1330, 1445);
-	    Activity a2 = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", "TH", 1330, 1445);
+	    Activity a1 = new Course("CSC226", "Discrete Math", "002", 4, "sesmith5", 10, "MW", 1330, 1445);
+	    Activity a2 = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", 10, "TH", 1330, 1445);
 	    try {
 	        a1.checkConflict(a2);
 	        assertEquals("Incorrect meeting string for this Activity.", "MW 1:30PM-2:45PM", a1.getMeetingString());
