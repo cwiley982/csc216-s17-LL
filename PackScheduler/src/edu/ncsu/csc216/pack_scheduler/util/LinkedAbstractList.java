@@ -149,11 +149,12 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 					current = current.next;
 				}
 				if (front.next == null) {
+					elementToReturn = front.data;
 					front = new ListNode(element);
 				} else {
+					elementToReturn = front.data;
 					front = new ListNode(element, front.next);
 				}
-				elementToReturn = front.data;
 			} else if (index == size) {
 				for (int i = 0; i < size - 1; i++) {
 					if (current.equals(element)) {
@@ -161,8 +162,8 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 					}
 					current = current.next;
 				}
-				current.next = new ListNode(element, null);
 				elementToReturn = current.next.data;
+				current.next = new ListNode(element, null);
 			} else {
 				for (int i = 0; i < size; i++) {
 					if (i == index - 1) {
@@ -174,8 +175,8 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 					}
 					current = current.next;
 				}
-				indexToChange.next = new ListNode(element, indexToChange.next.next);
 				elementToReturn = indexToChange.next.data;
+				indexToChange.next = new ListNode(element, indexToChange.next.next);
 			}
 			
 		}
