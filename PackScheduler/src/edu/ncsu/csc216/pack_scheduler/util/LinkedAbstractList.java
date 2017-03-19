@@ -173,7 +173,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 				indexToChange.next = new ListNode(element, indexToChange.next.next);
 			}
 		}
-		return elementToReturn;
+		return elementToReturn; 
 	}
 
 	/**
