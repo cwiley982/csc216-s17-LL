@@ -171,7 +171,7 @@ public class LinkedAbstractListTest {
 	@Test
 	public void testSet(){
 		LinkedAbstractList<String> list = new LinkedAbstractList<String>(10);
-		list.add(0, "Claire"); 
+		list.add(0, "Claire");
 		list.add(1, "Katherine");
 		list.add(2, "Brown"); 
 		//attempt to set a null element
@@ -221,5 +221,9 @@ public class LinkedAbstractListTest {
 		assertEquals("Computer", list.get(0));
 		assertEquals("Science", list.get(1));
 		assertEquals("Rocks!", list.get(2));
+		
+		LinkedAbstractList<String> list2 = new LinkedAbstractList<String>(10);
+		list2.add("Claire");
+		list2.set(0, "Sam");
 	}
 }
