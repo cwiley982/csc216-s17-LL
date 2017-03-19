@@ -47,11 +47,11 @@ public class Schedule {
 	 * @return a [][] of the scheduled courses and there information
 	 */
 	public String [][] getScheduledCourses() {
-		String [][] s = new String [schedule.size()][4];
+		String [][] s = new String [schedule.size()][5];
 		for(int i = 0; i < schedule.size(); i++) {
 			String [] c = schedule.get(i).getShortDisplayArray();
 			
-			for(int j = 0; j < 4; j++) {
+			for(int j = 0; j < 5; j++) {
 				s[i][j] = c[j];
 			}
 		}
