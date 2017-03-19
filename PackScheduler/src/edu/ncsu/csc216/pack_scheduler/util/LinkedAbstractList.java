@@ -132,7 +132,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		//if the list is empty
 		if (front == null && index == 0)
 		{
-			front = new ListNode(element);
+			throw new IndexOutOfBoundsException();
 		}
 		//if the list is not empty
 		else if (front != null) 
