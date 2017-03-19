@@ -153,7 +153,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 				} else {
 					front = new ListNode(element, front.next);
 				}
-				elementToReturn = (E) front.data;
+				elementToReturn = front.data;
 			} else if (index == size) {
 				for (int i = 0; i < size - 1; i++) {
 					if (current.equals(element)) {
@@ -162,7 +162,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 					current = current.next;
 				}
 				current.next = new ListNode(element, null);
-				elementToReturn = (E) current.next;
+				elementToReturn = current.next.data;
 			} else {
 				for (int i = 0; i < size; i++) {
 					if (i == index - 1) {
@@ -175,7 +175,9 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 					current = current.next;
 				}
 				indexToChange.next = new ListNode(element, indexToChange.next.next);
+				elementToReturn = indexToChange.next.data;
 			}
+			
 		}
 		return elementToReturn; 
 	}
