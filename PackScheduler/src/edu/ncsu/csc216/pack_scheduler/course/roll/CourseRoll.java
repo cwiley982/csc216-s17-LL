@@ -34,9 +34,10 @@ public class CourseRoll {
 	/**
 	 * Sets the enrollment cap
 	 * @param cap the enrollment cap to set
+	 * @throws IllegalArgumentException if the cap is invalid.
 	 */
 	public void setEnrollmentCap(int cap) {
-		if(cap > MAX_ENROLLMENT || cap < MIN_ENROLLMENT || cap < getOpenSeats()) {
+		if(cap > MAX_ENROLLMENT || cap < MIN_ENROLLMENT || cap < roll.size()) {
 			throw new IllegalArgumentException();
 		}
 		this.enrollmentCap = cap;
