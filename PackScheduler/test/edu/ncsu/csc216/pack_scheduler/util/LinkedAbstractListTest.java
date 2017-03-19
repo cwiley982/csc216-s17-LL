@@ -118,7 +118,7 @@ public class LinkedAbstractListTest {
 		list.add(6, "Words");
 		list.add(7, "Are");
 		list.add(8, "Cool");
-		list.add(9, "Sweet!");
+		list.add(9, "Sweet!"); 
 		try{
 			list.add(10, "You got it!");
 			fail();
