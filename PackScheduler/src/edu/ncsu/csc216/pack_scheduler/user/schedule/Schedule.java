@@ -28,14 +28,13 @@ public class Schedule {
 	 * @throws IllegalArgumentException if the course that wants to be added is a duplicate
 	 */
 	public boolean addCourseToSchedule(Course c) throws IllegalArgumentException {
-		for(int i = 0; i < schedule.size(); i++) {
+		for (int i = 0; i < schedule.size(); i++) {
 			if (c.isDuplicate(schedule.get(i))) {
 				throw new IllegalArgumentException("You are already enrolled in " + schedule.get(i).getName());
 			}
 			try {
 				c.checkConflict(schedule.get(i));
-			}
-			catch(ConflictException e) {
+			} catch (ConflictException e) {
 				throw new IllegalArgumentException("The course cannot be added due to a conflict.");
 			}
 		}
@@ -101,5 +100,43 @@ public class Schedule {
 			throw new IllegalArgumentException("Title cannot be null.");
 		}
 		title = s;
+	}
+
+	/**
+	 * Gets the total number of credits in the current schedule
+	 * 
+	 * @return the number of credits in the schedule
+	 */
+	public int getScheduleCredits() {
+		int numCredits = 0;
+		for (int i = 0; i < schedule.size(); i++) {
+			numCredits += schedule.get(i).getCredits();
+		}
+		return numCredits;
+	}
+
+	/**
+	 * Tells whether the course can be added to the schedule or not
+	 * 
+	 * @param course
+	 *            the course to be checked if it can be added
+	 * @return true if the course can be added, false otherwise
+	 */
+	public boolean canAdd(Course course) {
+		if (course == null) {
+			return false;
+		}
+		for (int i = 0; i < schedule.size(); i++) {
+			if (course.isDuplicate(schedule.get(i))) {
+				return false;
+			}
+			try {
+				schedule.get(i).checkConflict(course);
+			} catch (ConflictException e) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }
