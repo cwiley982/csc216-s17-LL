@@ -3,6 +3,8 @@ package edu.ncsu.csc216.pack_scheduler.user;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import edu.ncsu.csc216.pack_scheduler.course.Course;
 /**
  * Tests the student class
  * @author kagordo3 ckbrown3 cavandiv
@@ -379,5 +381,19 @@ public class StudentTest {
 		//compare people who are the same
 		assertEquals(0, s1.compareTo(s5));
 	}
-
+	
+	/**
+	 * Tests the canAdd method for the student class
+	 */
+	@Test
+	public void testCanAdd(){
+		Student s1 = new Student("bobby", "plumbus", "baplum", "email@ncsu.edu", "hashedpassword", 17);
+		Course c = new Course("CSC216", "Programming Concepts - Java", "001", 4, "sesmith5", 10, "MW", 1330, 1445);
+		//Should be able to add
+		assert (s1.canAdd(c));
+		s1.setMaxCredits(3);
+		//Should not be able to add
+		assertFalse(s1.canAdd(c));
+		
+	}
 }
