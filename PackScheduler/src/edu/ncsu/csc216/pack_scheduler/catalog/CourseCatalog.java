@@ -50,19 +50,20 @@ public class CourseCatalog {
 	 * @param section section of course to add
 	 * @param credits credits of course to add
 	 * @param instructorId instructor ID of course to add
+	 * @param enrollmentCap the enrollment cap of the course to add
 	 * @param meetingDays meeting days of course to add
 	 * @param startTime start time of course to add
 	 * @param endTime end time of course to add
 	 * @return whether the course can be added or not
 	 */
-	public boolean addCourseToCatalog(String name, String title, String section, int credits, String instructorId, String meetingDays, int startTime, int endTime){
+	public boolean addCourseToCatalog(String name, String title, String section, int credits, String instructorId, int enrollmentCap, String meetingDays, int startTime, int endTime){
 		Course c = null; 
 		try{
 			if(meetingDays.equals("A")){
-				c = new Course(name, title, section, credits, instructorId, meetingDays);
+				c = new Course(name, title, section, credits, instructorId, enrollmentCap, meetingDays);
 			}
 			else{
-				c = new Course(name, title, section, credits, instructorId, meetingDays, startTime, endTime);
+				c = new Course(name, title, section, credits, instructorId, enrollmentCap, meetingDays, startTime, endTime);
 			}
 			boolean duplicate = false;
 			for (int i = 0; i < catalog.size(); i++)
