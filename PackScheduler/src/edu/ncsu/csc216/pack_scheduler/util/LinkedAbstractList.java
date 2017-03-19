@@ -216,7 +216,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 		 */
 		public ListNode(E data){
 			this.data = data;
-			next = null;
+			next = null; 
 		}
 
 		/**
