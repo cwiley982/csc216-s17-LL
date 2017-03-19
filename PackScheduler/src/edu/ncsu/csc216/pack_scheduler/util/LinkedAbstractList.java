@@ -124,13 +124,14 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 	 */
 	@Override
 	public E set(int index, E element) {
+		E elementToReturn = element;
 		if (element == null) {
 			throw new NullPointerException();
 		} else if (index < 0 || index > size) {
 			throw new IndexOutOfBoundsException();
 		}
 		//if the list is empty
-		if (front == null && index == 0)
+		if (front == null)
 		{
 			throw new IndexOutOfBoundsException();
 		}
@@ -172,7 +173,7 @@ public class LinkedAbstractList<E> extends AbstractList<E> {
 				indexToChange.next = new ListNode(element, indexToChange.next.next);
 			}
 		}
-		return element;
+		return elementToReturn;
 	}
 
 	/**
