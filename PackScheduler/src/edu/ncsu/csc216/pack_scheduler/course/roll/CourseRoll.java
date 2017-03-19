@@ -5,7 +5,6 @@ import edu.ncsu.csc216.pack_scheduler.util.LinkedAbstractList;
 /**
  * Class that handles operations of a course roll, including adding dropping and increasing its capacity
  * @author Sam
- *
  */
 public class CourseRoll {
 	
@@ -89,6 +88,7 @@ public class CourseRoll {
 	 * True if a student can enroll false otherwise
 	 * @param s the student to test
 	 * @return true if they can enroll false otherwise
+	 * @throws IllegalArgumentException if s is null
 	 */
 	public boolean canEnroll(Student s) {
 		if(s == null){
