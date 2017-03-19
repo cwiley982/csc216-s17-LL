@@ -3,6 +3,7 @@
  */
 package edu.ncsu.csc216.pack_scheduler.course;
 
+import edu.ncsu.csc216.pack_scheduler.course.roll.CourseRoll;
 import edu.ncsu.csc216.pack_scheduler.course.validator.CourseNameValidator;
 import edu.ncsu.csc216.pack_scheduler.course.validator.InvalidTransitionException;
 
@@ -25,6 +26,7 @@ public class Course extends Activity implements Comparable<Course>
 	private String instructorId;
 	/** Validator to make sure the course name is legal */
 	private CourseNameValidator validator;
+	private CourseRoll roll;
 	/**
 	 * Constructs a course object with values for all fields
 	 * @param name name of the Course
@@ -36,11 +38,12 @@ public class Course extends Activity implements Comparable<Course>
 	 * @param startTime start time for Course
 	 * @param endTime end time for Course
 	 */
-	public Course(String name, String title, String section, int credits, String instructorId, String meetingDays,
+	public Course(String name, String title, String section, int credits, String instructorId, int enrollmentCap, String meetingDays,
 			int startTime, int endTime) 
 	{
 		super(title, meetingDays, startTime, endTime);
 		validator = new CourseNameValidator();
+		roll = new CourseRoll(enrollmentCap);
 		setName(name);
 		setSection(section);
 		setCredits(credits);
@@ -55,9 +58,9 @@ public class Course extends Activity implements Comparable<Course>
 	 * @param instructorId instructor's Unity ID
 	 * @param meetingDays meeting day for Course as a series of chars
 	 */
-	public Course(String name, String title, String section, int credits, String instructorId, String meetingDays)
+	public Course(String name, String title, String section, int credits, String instructorId, int enrollmentCap, String meetingDays)
 	{
-	    this(name, title, section, credits, instructorId, meetingDays, 0, 0);
+	    this(name, title, section, credits, instructorId, enrollmentCap, meetingDays, 0, 0);
 	}
 	
 	/**Sets the day(s) the course meets as a series of chars
@@ -224,9 +227,9 @@ public class Course extends Activity implements Comparable<Course>
 	{
 		 if (getMeetingDays().equals("A")) 
 		 {
-		        return name + "," + getTitle() + "," + section + "," + credits + "," + instructorId + "," + getMeetingDays();
+		        return name + "," + getTitle() + "," + section + "," + credits + "," + instructorId + "," + getCourseRoll() + "," + getMeetingDays();
 		 }
-		 return name + "," + getTitle() + "," + section + "," + credits + "," + instructorId + "," + getMeetingDays() + "," + getStartTime() + "," + getEndTime();
+		 return name + "," + getTitle() + "," + section + "," + credits + "," + instructorId + "," + getCourseRoll() + "," + getMeetingDays() + "," + getStartTime() + "," + getEndTime();
 	}
 	
 	/** Generates a hashCode for Course using all fields
@@ -284,11 +287,12 @@ public class Course extends Activity implements Comparable<Course>
 	@Override
 	public String[] getShortDisplayArray() 
 	{
-		String[] shortDisplay = new String[4];
+		String[] shortDisplay = new String[5];
 		shortDisplay[0] = name;
 		shortDisplay[1] = section;
 		shortDisplay[2] = getTitle();
 		shortDisplay[3] = getMeetingString();
+		shortDisplay[4] = Integer.toString(roll.getOpenSeats());
 		return shortDisplay;
 	}
 	/**Returns a longer array with the course's name, section 
@@ -360,6 +364,9 @@ public class Course extends Activity implements Comparable<Course>
 				compareToVal = -1;
 			return compareToVal;
 		}
+	}
+	public CourseRoll getCourseRoll(){
+		return roll;
 	}
 	
 }
